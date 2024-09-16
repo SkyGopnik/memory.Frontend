@@ -1,0 +1,42 @@
+@use "style/mixins/actions";
+
+.button {
+  padding: 15px 30px;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  cursor: pointer;
+
+  outline: none;
+  border: none;
+  border-radius: 35px;
+
+  transition: transform .3s ease;
+
+  background: var(--base-white, #fff);
+
+  @include actions.hover {
+    transform: scale(1.1);
+  }
+}
+
+.star {
+  width: 24px;
+  height: 24px;
+
+  position: absolute;
+
+  &.first {
+    top: -5px;
+    left: -1px;
+  }
+
+  &.second {
+    right: -3px;
+    bottom: -3px;
+  }
+}
