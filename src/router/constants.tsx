@@ -1,8 +1,6 @@
 import type { RouteObject } from "react-router";
 
-import { DefaultLayout } from "layouts";
-
-import { OnboardLayout } from "../layouts/onboard";
+import { DefaultLayout, OnboardLayout } from "layouts";
 
 import { OnboardPage, StartPage } from "pages";
 

@@ -1,5 +1,5 @@
 import {
-  ImageStepOne,
+  ImageStepFirst,
   ImageStepSecond,
   ImageStepThird,
   ImageStepFourth
@@ -12,7 +12,7 @@ export const STEPS = [
       "Перед тобой поле парных карточек с эмодзи. Постарайся запомнить" +
       " за несколько секунд расположение каждый пары эмодзи и после их " +
       "закрытия, найти все пары за отведенное время.",
-    image: ImageStepOne
+    image: ImageStepFirst
   },
   {
     title: "Валюта и система уровней",

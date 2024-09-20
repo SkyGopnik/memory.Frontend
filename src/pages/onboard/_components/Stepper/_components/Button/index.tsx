@@ -1,21 +1,25 @@
 import classNames from "classnames";
 import type { FC } from "react";
 
-import ArrowRightIcon from "./_assets/arrow.svg";
+import { IconArrow } from "./_assets";
+
+import type { PlayButtonProps } from "./types";
 
 import style from "./index.module.scss";
 
-export type PlayButtonProps = {
-  type: "play" | "icon";
-  className?: string;
-  onClick?: () => void;
-};
-
-export const Button: FC<PlayButtonProps> = ({ type, className, ...props }) => (
+export const Button: FC<PlayButtonProps> = ({
+  buttonType,
+  className,
+  ...props
+}) => (
   <button
     {...props}
-    className={classNames(style.button, style[`buttonType_${type}`], className)}
+    className={classNames(
+      style.button,
+      { [style.play]: buttonType === "play" },
+      className
+    )}
   >
-    {type === "play" ? "Поехали" : <ArrowRightIcon />}
+    {buttonType === "play" ? "Поехали" : <IconArrow />}
   </button>
 );

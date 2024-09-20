@@ -1,41 +1,33 @@
 import classNames from "classnames";
 import type { FunctionComponent } from "react";
 
-import { Button } from "./_components/Button";
+import { Button } from "./_components";
+
+import type { Step } from "./types";
 
 import style from "./index.module.scss";
 
-interface Step {
-  title: string;
-  description: string;
-  image: string;
-  nextStep(): void;
-  isLastStep: boolean;
-}
-
 interface Props {
-  steps: Step;
+  step: Step;
 }
 
-export const Stepper: FunctionComponent<Props> = ({ steps }) => {
-  const { title, description, isLastStep, image, nextStep } = steps;
+export const Stepper: FunctionComponent<Props> = ({ step }) => {
+  const { title, description, isLastStep, image, nextStep } = step;
 
   return (
     <div className={style.stepper}>
-      <div className={style.stepper__image}>
+      <div className={style.image}>
         <img src={image} alt={`Изображение "${title}"`} />
       </div>
 
-      <div className={style.stepper__data}>
-        <div className={classNames(style.data, isLastStep && style.dataLast)}>
-          <p className={style.data__title}>{title}</p>
+      <div className={style.content}>
+        <div className={classNames(style.info, { [style.last]: isLastStep })}>
+          <p className={style.title}>{title}</p>
 
-          <p className={style.data__description}>{description}</p>
+          <p className={style.description}>{description}</p>
         </div>
 
-        <div className={style.action}>
-          <Button type={isLastStep ? "play" : "icon"} onClick={nextStep} />
-        </div>
+        <Button onClick={nextStep} buttonType={isLastStep ? "play" : "icon"} />
       </div>
     </div>
   );

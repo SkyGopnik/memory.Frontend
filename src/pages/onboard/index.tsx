@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 
-import { Stepper } from "./_components/Stepper";
+import { Stepper } from "./_components";
 
 import { STEPS } from "./constants";
 
@@ -22,7 +22,7 @@ export const OnboardPage = () => {
 
   return (
     <Stepper
-      steps={{
+      step={{
         isLastStep,
         ...currentStep,
         nextStep
