@@ -14,7 +14,7 @@ export const OnboardPage = () => {
     [activeStep]
   );
 
-  const nextStep = () => {
+  const handleActionClick = () => {
     if (!isLastStep) {
       setActiveStep(activeStep + 1);
     }
@@ -22,11 +22,11 @@ export const OnboardPage = () => {
 
   return (
     <Stepper
-      step={{
-        isLastStep,
-        ...currentStep,
-        nextStep
-      }}
+      description={currentStep.description}
+      image={currentStep.image}
+      buttonType={isLastStep ? "play" : "icon"}
+      onActionClick={handleActionClick}
+      title={currentStep.title}
     />
   );
 };

@@ -24,16 +24,15 @@
 }
 
 .content {
-  min-width: 100%;
-  max-width: 792px;
+  width: 100%;
 
   padding: 20px;
 
   display: flex;
-
   align-items: center;
   justify-content: space-between;
   flex-direction: row;
+  gap: 52px;
 
   border-radius: 25px 100px 100px 25px;
 
@@ -41,17 +40,12 @@
 
   .info {
     width: 100%;
-    max-width: 650px;
     height: 100%;
 
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     gap: 10px;
-
-    &.last {
-      max-width: 568px;
-    }
 
     .title {
       font-size: 20px;

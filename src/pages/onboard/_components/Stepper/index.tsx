@@ -1,4 +1,3 @@
-import classNames from "classnames";
 import type { FunctionComponent } from "react";
 
 import { Button } from "./_components";
@@ -7,13 +6,13 @@ import type { Step } from "./types";
 
 import style from "./index.module.scss";
 
-interface Props {
-  step: Step;
-}
-
-export const Stepper: FunctionComponent<Props> = ({ step }) => {
-  const { title, description, isLastStep, image, nextStep } = step;
-
+export const Stepper: FunctionComponent<Step> = ({
+  image,
+  title,
+  buttonType,
+  description,
+  onActionClick
+}) => {
   return (
     <div className={style.stepper}>
       <div className={style.image}>
@@ -21,13 +20,17 @@ export const Stepper: FunctionComponent<Props> = ({ step }) => {
       </div>
 
       <div className={style.content}>
-        <div className={classNames(style.info, { [style.last]: isLastStep })}>
+        <div className={style.info}>
           <p className={style.title}>{title}</p>
 
           <p className={style.description}>{description}</p>
         </div>
 
-        <Button onClick={nextStep} buttonType={isLastStep ? "play" : "icon"} />
+        <Button
+          className={style.button}
+          onClick={onActionClick}
+          buttonType={buttonType}
+        />
       </div>
     </div>
   );
