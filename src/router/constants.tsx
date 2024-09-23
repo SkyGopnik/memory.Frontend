@@ -1,6 +1,6 @@
 import type { RouteObject } from "react-router";
 
-import { DefaultLayout } from "layouts";
+import { DefaultLayout, OnboardLayout } from "layouts";
 
 import { OnboardPage, StartPage } from "pages";
 
@@ -15,7 +15,7 @@ export const ROUTES: Array<RouteObject> = [
     ]
   },
   {
-    element: <DefaultLayout />,
+    element: <OnboardLayout />,
     children: [
       {
         path: "/onboard",
