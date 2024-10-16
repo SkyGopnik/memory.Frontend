@@ -4,7 +4,7 @@ import { ImageBackgroundPattern } from "assets";
 
 import style from "./index.module.scss";
 
-export const DefaultLayout = () => (
+export const PlayLayout = () => (
   <div className={style.layout}>
     <ImageBackgroundPattern className={style.background} />
 
