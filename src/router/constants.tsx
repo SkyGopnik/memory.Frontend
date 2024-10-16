@@ -1,8 +1,13 @@
 import type { RouteObject } from "react-router";
 
-import { DefaultLayout, OnboardLayout } from "layouts";
+import {
+  DefaultLayout,
+  OnboardLayout,
+  PlayLayout,
+  RatingLayout
+} from "layouts";
 
-import { OnboardPage, StartPage } from "pages";
+import { OnboardPage, PlayPage, RatingPage, StartPage } from "pages";
 
 export const ROUTES: Array<RouteObject> = [
   {
@@ -20,6 +25,24 @@ export const ROUTES: Array<RouteObject> = [
       {
         path: "/onboard",
         element: <OnboardPage />
+      }
+    ]
+  },
+  {
+    element: <PlayLayout />,
+    children: [
+      {
+        path: "/play",
+        element: <PlayPage />
+      }
+    ]
+  },
+  {
+    element: <RatingLayout />,
+    children: [
+      {
+        path: "/rating",
+        element: <RatingPage />
       }
     ]
   }

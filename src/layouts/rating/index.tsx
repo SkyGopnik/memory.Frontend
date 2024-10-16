@@ -1,9 +1,12 @@
+import classNames from "classnames";
 import { Outlet } from "react-router";
 
 import { ImageBackgroundPattern } from "./_assets";
 
-export const OnboardLayout = () => (
-  <div className="layout">
+import style from "./index.module.scss";
+
+export const RatingLayout = () => (
+  <div className={classNames(style.layout, "layout")}>
     <ImageBackgroundPattern className="background" />
 
     <div className="content">
