@@ -4,7 +4,7 @@ import { PlayButton } from "components/common";
 
 import { ImageCoin, ImageLogo } from "assets";
 
-import { ImageRating, ImageStats } from "../start-page/_assets";
+import { ImageRating, ImageLevel } from "./_assets";
 
 import style from "./index.module.scss";
 
@@ -15,13 +15,19 @@ export const PlayPage = () => {
     <div className={style.page}>
       <img src={ImageLogo} alt="Изображение логотипа" />
 
-      <PlayButton onClick={() => navigate("/onboard")} />
+      <PlayButton onClick={() => navigate("/game")} />
 
       <div className={style.data}>
         <div className={style.leftSide}>
-          <ImageRating className={style.rating} />
+          <ImageRating
+            className={style.rating}
+            onClick={() => navigate("/rating")}
+          />
 
-          <ImageStats className={style.stats} />
+          <ImageLevel
+            className={style.level}
+            onClick={() => navigate("level")}
+          />
         </div>
 
         <div className={style.rightSide}>
