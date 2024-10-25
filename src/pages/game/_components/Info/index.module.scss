@@ -1,0 +1,37 @@
+.info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.item {
+  padding: 6px 12px;
+
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 26px;
+
+  border-radius: 30px;
+
+  background-color: var(--base-white);
+
+  svg {
+    fill: currentcolor;
+  }
+
+  &.time {
+    color: var(--blue-500);
+  }
+
+  &.limit {
+    color: var(--red-500);
+  }
+
+  &.coins {
+    color: var(--fuchsia-500);
+  }
+}

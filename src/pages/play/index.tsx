@@ -1,10 +1,11 @@
+import classNames from "classnames";
 import { useNavigate } from "react-router";
 
 import { PlayButton } from "components/common";
 
-import { ImageCoin, ImageLogo } from "assets";
+import { IconCoin, ImageLogo } from "assets";
 
-import { ImageRating, ImageLevel } from "./_assets";
+import { IconLevel } from "./_assets";
 
 import style from "./index.module.scss";
 
@@ -17,24 +18,19 @@ export const PlayPage = () => {
 
       <PlayButton onClick={() => navigate("/game")} />
 
-      <div className={style.data}>
-        <div className={style.leftSide}>
-          <ImageRating
-            className={style.rating}
-            onClick={() => navigate("/rating")}
-          />
+      <div className={style.actions}>
+        <button
+          className={classNames(style.icon, style.level)}
+          onClick={() => navigate("level")}
+        >
+          <IconLevel />
+        </button>
 
-          <ImageLevel
-            className={style.level}
-            onClick={() => navigate("level")}
-          />
-        </div>
+        <button className={classNames(style.icon, style.coins)}>
+          <IconCoin />
 
-        <div className={style.rightSide}>
-          <ImageCoin />
-
-          <p className={style.coins}>2000</p>
-        </div>
+          <span>1000</span>
+        </button>
       </div>
     </div>
   );

@@ -1,10 +1,15 @@
 import { useMemo, useState } from "react";
+import { useNavigate } from "react-router";
 
 import { Stepper } from "./_components";
+
+import { storage } from "../../utils";
 
 import { STEPS } from "./constants";
 
 export const OnboardPage = () => {
+  const navigate = useNavigate();
+
   const [activeStep, setActiveStep] = useState(0);
 
   const currentStep = useMemo(() => STEPS[activeStep], [activeStep]);
@@ -17,7 +22,11 @@ export const OnboardPage = () => {
   const handleActionClick = () => {
     if (!isLastStep) {
       setActiveStep(activeStep + 1);
+      return;
     }
+
+    storage.set("isOnboardSuccess", { data: true });
+    navigate("/play");
   };
 
   return (

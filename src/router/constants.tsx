@@ -9,6 +9,8 @@ import {
 
 import { OnboardPage, PlayPage, RatingPage, StartPage } from "pages";
 
+import GamePage from "../pages/game";
+
 export const ROUTES: Array<RouteObject> = [
   {
     element: <DefaultLayout />,
@@ -43,6 +45,15 @@ export const ROUTES: Array<RouteObject> = [
       {
         path: "/rating",
         element: <RatingPage />
+      }
+    ]
+  },
+  {
+    element: <RatingLayout />,
+    children: [
+      {
+        path: "/game",
+        element: <GamePage />
       }
     ]
   }

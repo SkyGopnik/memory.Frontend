@@ -1,6 +1,5 @@
 import classNames from "classnames";
 import type { FC, MouseEvent } from "react";
-import { useNavigate } from "react-router";
 
 import { IconArrow } from "./_assets";
 
@@ -13,15 +12,8 @@ export const Button: FC<PlayButtonProps> = ({
   className,
   ...props
 }) => {
-  const navigate = useNavigate();
-
-  const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
-    if (buttonType === "play") {
-      navigate("/play");
-    } else if (props.onClick) {
-      props.onClick(event);
-    }
-  };
+  const handleClick = (event: MouseEvent<HTMLButtonElement>) =>
+    props.onClick?.(event);
 
   return (
     <button

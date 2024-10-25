@@ -11,7 +11,7 @@
   gap: 35px;
 }
 
-.data {
+.actions {
   width: 100%;
 
   padding: 30px;
@@ -22,63 +22,48 @@
 
   display: flex;
   justify-content: space-between;
+}
 
-  .level,
-  .rating,
-  .rightSide {
-    height: 50px;
+.icon {
+  width: 50px;
+  height: 50px;
 
-    border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 22px;
+
+  cursor: pointer;
+
+  border-radius: 50%;
+
+  transition: all .3s ease;
+
+  svg {
+    fill: currentcolor;
   }
 
-  .leftSide {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-
-    .level,
-    .rating {
-      width: 50px;
-
-      padding: 10px;
-
-      cursor: pointer;
-
-      transition: all .3s ease;
-
-      @include actions.hover {
-        transform: scale(1.1);
-      }
-    }
-
-    .level {
-      background-color: var(--emerald-100, #D1FAE5);
-    }
-
-    .rating {
-      background-color: var(--indigo-100, #E0E7FF);;
-    }
+  @include actions.hover {
+    transform: scale(1.1);
   }
 
-  .rightSide {
-    width: fit-content;
+  &.level {
+    background-color: var(--emerald-100, #D1FAE5);
+  }
+
+  &.coins {
+    width: auto;
 
     padding: 10px 12px;
 
-    display: flex;
-    align-items: center;
-    gap: 6px;
+    border-radius: 35px;
 
+    color: var(--fuchsia-500, #D946EF);
     background-color: var(--fuchsia-100, #FAE8FF);
-
-    .coins {
-      font-size: 18px;
-      font-style: normal;
-      font-weight: 700;
-      line-height: 22px;
-
-      color: var(--fuchsia-500, #D946EF);
-    }
   }
 }
