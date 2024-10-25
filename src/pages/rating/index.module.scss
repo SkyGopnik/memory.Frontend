@@ -1,0 +1,115 @@
+@use "style/mixins/actions";
+
+.page {
+  padding: 30px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.head {
+  width: 100%;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .title {
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 36px;
+
+    text-align: center;
+
+    color: var(--base-white, #FFF);
+  }
+
+  .close {
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    cursor: pointer;
+
+    background-color: transparent;
+
+    @include actions.hover {
+      transition: all .3s ease;
+
+      opacity: 0.3
+    }
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  overflow-y: scroll;
+}
+
+.player {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+
+  .data {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+
+  .position,
+  .name,
+  .score {
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 22px;
+
+    color: var(--base-black, #000);
+  }
+
+  .position {
+    min-width: 32px;
+    min-height: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 6px;
+
+    background: var(--base-white, #FFF);
+  }
+
+  .name,
+  .score {
+    color: var(--base-white, #FFF);
+  }
+
+  .name {
+    display: -webkit-box;
+
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+  }
+
+  .rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+
+    .largeRhombus {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}

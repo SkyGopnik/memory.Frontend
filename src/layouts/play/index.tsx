@@ -1,8 +1,8 @@
 import { Outlet } from "react-router";
 
-import { ImageBackgroundPattern } from "./_assets";
+import { ImageBackgroundPattern } from "assets";
 
-export const OnboardLayout = () => (
+export const PlayLayout = () => (
   <div className="layout">
     <ImageBackgroundPattern className="background" />
 
