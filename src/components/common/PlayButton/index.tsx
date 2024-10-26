@@ -8,7 +8,11 @@ import type { PlayButtonProps } from "./types";
 import style from "./index.module.scss";
 
 export const PlayButton: FC<PlayButtonProps> = ({ className, ...props }) => (
-  <button className={classNames(style.button, className)} {...props}>
+  <button
+    className={classNames(style.button, className)}
+    aria-label="Играть"
+    {...props}
+  >
     <IconPlay />
 
     <ImageText />

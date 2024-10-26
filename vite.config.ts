@@ -2,7 +2,6 @@ import react from "@vitejs/plugin-react";
 import { readdirSync } from "fs";
 import * as path from "path";
 import { defineConfig } from "vite";
-import { viteSingleFile } from "vite-plugin-singlefile";
 import svgr from "vite-plugin-svgr";
 
 const absolutePathAliases: { [key: string]: string } = {};
@@ -31,7 +30,6 @@ export default defineConfig({
     react(),
     svgr({
       include: "**/*.svg"
-    }),
-    viteSingleFile()
+    })
   ]
 });

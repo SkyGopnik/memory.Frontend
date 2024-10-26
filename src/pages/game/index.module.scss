@@ -13,7 +13,46 @@
 
 .game {
   display: grid;
-  grid-template-columns: repeat(3, 120px);
-  gap: 20px;
-  grid-template-rows: repeat(2, 120px);
+
+  &.size6 {
+    grid-template-columns: repeat(3, 120px);
+    gap: 20px;
+    grid-template-rows: repeat(2, 120px);
+  }
+
+  &.size8 {
+    grid-template-columns: repeat(4, 120px);
+    gap: 20px;
+    grid-template-rows: repeat(2, 120px);
+  }
+
+  &.size10 {
+    grid-template-columns: repeat(5, 110px);
+    gap: 20px;
+    grid-template-rows: repeat(2, 110px);
+  }
+
+  &.size12 {
+    grid-template-columns: repeat(6, 100px);
+    gap: 20px;
+    grid-template-rows: repeat(2, 100px);
+  }
+
+  &.size14 {
+    grid-template-columns: repeat(7, 90px);
+    gap: 16px;
+    grid-template-rows: repeat(2, 90px);
+  }
+
+  &.size18 {
+    grid-template-columns: repeat(6, 80px);
+    gap: 16px;
+    grid-template-rows: repeat(3, 80px);
+  }
+
+  &.size24 {
+    grid-template-columns: repeat(8, 70px);
+    gap: 16px;
+    grid-template-rows: repeat(3, 70px);
+  }
 }

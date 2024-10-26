@@ -1,14 +1,13 @@
 import classNames from "classnames";
 import type { FC } from "react";
+import type { ButtonProps } from "react-html-props";
 
-import { IconClose } from "./_assets";
-
-import type { PlayButtonProps } from "./types";
+import { IconClose } from "assets";
 
 import style from "./index.module.scss";
 
-export const CloseButton: FC<PlayButtonProps> = ({ className, ...props }) => (
+export const CloseButton: FC<ButtonProps> = ({ className, ...props }) => (
   <button className={classNames(style.button, className)} {...props}>
-    <IconClose className={style.lock} />
+    <IconClose />
   </button>
 );

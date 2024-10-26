@@ -16,15 +16,15 @@
     "init:git": "git config core.autocrlf false && git config core.eol lf"
   },
   "dependencies": {
+    "@react-hooks-library/core": "0.6.2",
+    "@vkontakte/vk-bridge": "2.14.1",
     "classnames": "2.5.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "sass": "1.58.0",
-    "zustand": "4.4.7",
     "react-router-dom": "6.22.1",
     "react-swipeable": "7.0.1",
-    "@react-hooks-library/core": "0.6.2",
-    "@vkontakte/vk-bridge": "2.14.1"
+    "sass": "1.58.0",
+    "zustand": "4.4.7"
   },
   "devDependencies": {
     "@types/node": "18.11.19",
@@ -37,7 +37,6 @@
     "react-html-props": "2.0.3",
     "typescript": "5.5.4",
     "vite": "5.2.6",
-    "vite-plugin-singlefile": "2.0.1",
     "vite-plugin-svgr": "4.2.0"
   },
   "engines": {

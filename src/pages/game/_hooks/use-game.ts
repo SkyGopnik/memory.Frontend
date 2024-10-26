@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import type { GameOptions } from "store";
 
-import { useUpdateEffect } from "../../../hooks";
+import { useUpdateEffect } from "hooks";
 
 import { getRandomElements, getShuffledElements } from "./utils";
 
@@ -11,17 +12,55 @@ type FieldItem = {
   value: string;
 };
 
-export const useGame = () => {
-  const [timer, setTimer] = useState(120);
-  const [field, setField] = useState<Array<FieldItem>>([]);
+export const useGame = (options: GameOptions) => {
+  const [timer, setTimer] = useState(options.timer);
+  const [limit, setLimit] = useState(options.limit);
+  const [score, setScore] = useState(0);
+
+  const [field, setField] = useState<Array<FieldItem>>(() => {
+    const randomIcons = getRandomElements(
+      FOOD_AND_DRINK_ICONS,
+      options.cards / 2
+    );
+    const iconsPairs = [...randomIcons, ...randomIcons];
+
+    return getShuffledElements(iconsPairs).map((value) => ({
+      value,
+      isActive: false
+    }));
+  });
 
   const [openedItems, setOpenedItems] = useState<Array<number>>([]);
+
+  const isGameComplete = useMemo(
+    () => field.filter(({ isActive }) => isActive).length === field.length,
+    [field]
+  );
+
+  const isGameOver = useMemo(
+    () => limit === 0 || timer === 0 || isGameComplete,
+    [limit, timer, isGameComplete]
+  );
+
+  const decreaseLimit = () => {
+    if (!limit) {
+      return;
+    }
+
+    const newLimit = limit - 1;
+
+    if (newLimit < 0) {
+      return;
+    }
+
+    setLimit(limit - 1);
+  };
 
   useEffect(() => {
     const timeout = setTimeout(() => {
       const newTimer = timer - 1;
 
-      if (newTimer <= 0) {
+      if (newTimer < 0) {
         return;
       }
 
@@ -30,18 +69,6 @@ export const useGame = () => {
 
     return () => clearTimeout(timeout);
   }, [timer]);
-
-  useEffect(() => {
-    const randomIcons = getRandomElements(FOOD_AND_DRINK_ICONS, 3);
-    const iconsPairs = [...randomIcons, ...randomIcons];
-
-    const field = getShuffledElements(iconsPairs).map((value) => ({
-      value,
-      isActive: false
-    }));
-
-    setField(field);
-  }, []);
 
   useUpdateEffect(() => {
     if (openedItems.length !== 2) {
@@ -56,15 +83,18 @@ export const useGame = () => {
     const previousItem = newField[previousItemIndex];
 
     if (currentItem.value !== previousItem.value) {
+      decreaseLimit();
+
       setTimeout(() => {
         setOpenedItems([]);
-      }, 1000);
+      }, 500);
     } else {
       currentItem.isActive = true;
       previousItem.isActive = true;
 
       setField(newField);
       setOpenedItems([]);
+      setScore((score) => score + 1);
     }
   }, [openedItems]);
 
@@ -79,7 +109,11 @@ export const useGame = () => {
   return {
     timer,
     field,
+    limit,
+    score,
     openedItems,
+    isGameOver,
+    isGameComplete,
     handleItemClick
   };
 };

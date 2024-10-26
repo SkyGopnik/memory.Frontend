@@ -20,6 +20,11 @@
 
   background-color: var(--amber-400);
 
+  img {
+    width: 60px;
+    height: 60px;
+  }
+
   @include actions.hover {
     transform: scale(1.1);
   }

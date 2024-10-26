@@ -21,12 +21,16 @@ export const PlayPage = () => {
       <div className={style.actions}>
         <button
           className={classNames(style.icon, style.level)}
+          aria-label="Уровни"
           onClick={() => navigate("/levels")}
         >
           <IconLevel />
         </button>
 
-        <button className={classNames(style.icon, style.coins)}>
+        <button
+          className={classNames(style.icon, style.coins)}
+          aria-label="Монеты"
+        >
           <IconCoin />
 
           <span>1000</span>

@@ -34,10 +34,7 @@ export const LevelsPage = () => {
       <div className={style.head}>
         <p className={style.title}>Уровни игры</p>
 
-        <CloseButton
-          onClick={() => navigate("/play")}
-          className={style.close}
-        />
+        <CloseButton onClick={() => navigate(-1)} className={style.close} />
       </div>
 
       <div className={style.list} ref={listRef}>

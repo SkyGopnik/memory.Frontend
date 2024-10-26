@@ -1,5 +1,5 @@
 export type InfoProps = {
   timer: number;
-  coins?: number;
+  score?: number;
   limit?: number;
 };

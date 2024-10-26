@@ -24,12 +24,13 @@ export const Level = ({
   const LockedLevel = currentScore < requiredScore;
 
   return (
-    <button
+    <div
       className={classNames(
         style.level,
         { [style.levelLocked]: LockedLevel },
         { [style.levelLockedNext]: isNextLocked }
       )}
+      role="button"
     >
       <div className={style.general}>
         <div className={style.image}>
@@ -73,6 +74,6 @@ export const Level = ({
           </div>
         </div>
       )}
-    </button>
+    </div>
   );
 };
