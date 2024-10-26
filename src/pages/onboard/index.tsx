@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 
 import { Stepper } from "./_components";
 
-import { storage } from "../../utils";
+import { storage } from "utils";
 
 import { STEPS } from "./constants";
 

@@ -4,7 +4,7 @@ import { useGame } from "./_hooks";
 
 import style from "./index.module.scss";
 
-export default function GamePage() {
+export const GamePage = () => {
   const { timer, field, openedItems, handleItemClick } = useGame();
 
   return (
@@ -24,4 +24,4 @@ export default function GamePage() {
       </div>
     </div>
   );
-}
+};

@@ -1,0 +1,9 @@
+export { default as ImageNumberOne } from "./one.svg";
+export { default as ImageNumberTwo } from "./two.svg";
+export { default as ImageNumberThree } from "./three.svg";
+export { default as ImageNumberFour } from "./four.svg";
+export { default as ImageNumberFive } from "./five.svg";
+export { default as ImageNumberSix } from "./six.svg";
+export { default as ImageNumberSeven } from "./seven.svg";
+export { default as ImageNumberEight } from "./eight.svg";
+export { default as ImageNumberNine } from "./nine.svg";

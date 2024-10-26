@@ -1,0 +1,134 @@
+@use "style/mixins/actions";
+
+.level {
+  min-width: 240px;
+  height: 240px;
+
+  padding: 40px 0 25px;
+
+  align-self: stretch;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  cursor: pointer;
+
+  border-radius: 50px;
+
+  background-color: var(--purple-300, #D8B4FE);
+
+  &:first-child {
+    margin-left: 80px;
+  }
+
+  &:last-child {
+    margin-right: 80px;
+  }
+
+  &Locked {
+    border-radius: 50px;
+
+    background-color: var(--purple-950, #3B0764);
+  }
+
+  .general {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 14px;
+
+    .image {
+      max-width: 70px;
+      max-height: 70px;
+
+      position: relative;
+
+      .levelIcon {
+        &Locked {
+          filter: brightness(0) saturate(100%) invert(39%) sepia(34%) saturate(4926%) hue-rotate(248deg) brightness(100%) contrast(95%);
+        }
+      }
+
+      .lock {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+      }
+    }
+
+    .title {
+      font-size: 20px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 26px;
+
+      text-align: center;
+
+      color: var(--purple-700, #7E22CE);
+
+      &Locked {
+        color: var(--purple-500, #A855F7);
+      }
+    }
+  }
+
+  .progress {
+    margin-top: auto;
+
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 8px;
+
+    .bar {
+      width: 90px;
+      height: 4px;
+
+      display: flex;
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 10px;
+
+      border-radius: 3px;
+
+      overflow: hidden;
+
+      background: var(--purple-800, #6B21A8);
+
+      .line {
+        height: 4px;
+
+        background: var(--base-white, #FFF);
+      }
+    }
+
+    .data {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+
+      .coin {
+        width: 16px;
+        height: 16px;
+
+        filter: brightness(0) saturate(100%) invert(88%) sepia(92%) saturate(5861%) hue-rotate(184deg) brightness(129%) contrast(98%);
+      }
+
+      .score {
+        display: flex;
+        gap: 5px;
+
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 22px;
+
+        text-align: center;
+
+        color: var(--base-white, #FFF);
+      }
+    }
+  }
+}

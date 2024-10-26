@@ -2,14 +2,21 @@ import type { RouteObject } from "react-router";
 
 import {
   DefaultLayout,
+  LevelsLayout,
   OnboardLayout,
   PlayLayout,
-  RatingLayout
+  RatingLayout,
+  GameLayout
 } from "layouts";
 
-import { OnboardPage, PlayPage, RatingPage, StartPage } from "pages";
-
-import GamePage from "../pages/game";
+import {
+  OnboardPage,
+  PlayPage,
+  RatingPage,
+  StartPage,
+  LevelsPage,
+  GamePage
+} from "pages";
 
 export const ROUTES: Array<RouteObject> = [
   {
@@ -49,11 +56,20 @@ export const ROUTES: Array<RouteObject> = [
     ]
   },
   {
-    element: <RatingLayout />,
+    element: <GameLayout />,
     children: [
       {
         path: "/game",
         element: <GamePage />
+      }
+    ]
+  },
+  {
+    element: <LevelsLayout />,
+    children: [
+      {
+        path: "/levels",
+        element: <LevelsPage />
       }
     ]
   }
