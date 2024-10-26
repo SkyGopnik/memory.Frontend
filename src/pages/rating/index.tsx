@@ -1,7 +1,7 @@
 import classNames from "classnames";
 import { useNavigate } from "react-router";
 
-import { ImageClose } from "assets";
+import { CloseButton } from "components/common";
 
 import { ImageRhombus } from "./_assets";
 
@@ -36,7 +36,10 @@ export const RatingPage = () => {
       <div className={style.head}>
         <p className={style.title}>Рейтинг</p>
 
-        <ImageClose className={style.close} onClick={() => navigate("/play")} />
+        <CloseButton
+          className={style.close}
+          onClick={() => navigate("/play")}
+        />
       </div>
 
       <div className={style.list}>

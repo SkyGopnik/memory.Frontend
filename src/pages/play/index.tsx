@@ -21,7 +21,7 @@ export const PlayPage = () => {
       <div className={style.actions}>
         <button
           className={classNames(style.icon, style.level)}
-          onClick={() => navigate("level")}
+          onClick={() => navigate("/levels")}
         >
           <IconLevel />
         </button>
