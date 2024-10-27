@@ -35,7 +35,7 @@ export const GamePage = () => {
     handleItemClick
   } = useGame(
     options ?? {
-      timer: 1,
+      timer: 30,
       limit: 10,
       cards: 6
     }
