@@ -1,8 +1,11 @@
 import classNames from "classnames";
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import { useGameStore } from "store";
 
-import { Info, Item } from "./_components";
+import { Info } from "components/core";
+
+import { Item } from "./_components";
 
 import { useUpdateEffect } from "hooks";
 
@@ -17,6 +20,8 @@ const iconsPack = import.meta.glob(
 export const GamePage = () => {
   const { options, setResults } = useGameStore();
 
+  const navigate = useNavigate();
+
   const [icons, setIcons] = useState<Record<string, string>>({});
 
   const {
@@ -30,7 +35,7 @@ export const GamePage = () => {
     handleItemClick
   } = useGame(
     options ?? {
-      timer: 10,
+      timer: 1,
       limit: 10,
       cards: 6
     }
@@ -59,14 +64,11 @@ export const GamePage = () => {
   useUpdateEffect(() => {
     setResults({
       score,
-      timer
+      timer,
+      limit
     });
 
-    if (isGameComplete) {
-      console.log("win");
-    } else {
-      console.log("lose");
-    }
+    navigate(isGameComplete ? "/game/success" : "/game/fail");
   }, [isGameOver]);
 
   return (

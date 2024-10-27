@@ -1,0 +1,53 @@
+@use "style/mixins/actions";
+
+.button {
+  width: 292px;
+  height: 56px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // TODO: исправить шрифт
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 24px;
+
+  text-transform: uppercase;
+
+  cursor: pointer;
+
+  border-radius: 30px;
+
+  transition: transform .3s ease;
+
+  @include actions.hover {
+    transform: scale(1.05);
+  }
+
+  &.primary {
+    background-color: var(--base-white);
+  }
+}
+
+@mixin button-color($color) {
+  .#{$color} {
+    &.primary {
+      color: var(--#{$color}-500);
+    }
+
+    &.secondary {
+      color: var(--#{$color}-600);
+      background-color: var(--#{$color}-200);
+    }
+  }
+}
+
+@include button-color("amber");
+@include button-color("red");
+@include button-color("lime");
+@include button-color("pink");
+@include button-color("violet");
+@include button-color("blue");
+@include button-color("purple");

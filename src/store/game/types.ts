@@ -9,6 +9,7 @@ export type GameOptions = {
 export type GameResults = {
   score: number;
   timer: number;
+  limit?: number;
 };
 
 export type GameStore = {

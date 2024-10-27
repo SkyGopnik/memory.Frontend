@@ -2,7 +2,15 @@ import type { RouteObject } from "react-router";
 
 import { LevelsLayout, OnboardLayout, PlayLayout, GameLayout } from "layouts";
 
-import { OnboardPage, PlayPage, StartPage, LevelsPage, GamePage } from "pages";
+import {
+  OnboardPage,
+  PlayPage,
+  StartPage,
+  LevelsPage,
+  GamePage,
+  GameSuccessPage,
+  GameFailPage
+} from "pages";
 
 export const ROUTES: Array<RouteObject> = [
   {
@@ -40,6 +48,14 @@ export const ROUTES: Array<RouteObject> = [
         element: <GamePage />
       }
     ]
+  },
+  {
+    path: "/game/success",
+    element: <GameSuccessPage />
+  },
+  {
+    path: "/game/fail",
+    element: <GameFailPage />
   },
   {
     element: <LevelsLayout />,
