@@ -1,8 +1,7 @@
 import { useNavigate } from "react-router";
-import { useGameStore } from "store";
 
-import { CloseButton } from "components/common";
-import { Button, Info, LayoutWrapper } from "components/core";
+import { Button, LayoutWrapper } from "components/core";
+import { AfterGame } from "components/core/AfterGame";
 
 import { PatternFail } from "assets";
 
@@ -11,29 +10,13 @@ import style from "./index.module.scss";
 export const GameFailPage = () => {
   const navigate = useNavigate();
 
-  const { results } = useGameStore();
-
   return (
     <LayoutWrapper className={style.page} pattern={PatternFail}>
-      <div className={style.content}>
-        <CloseButton className={style.close} onClick={() => navigate(-2)} />
-
-        {results && (
-          <Info
-            timer={results.timer}
-            score={results.score}
-            limit={results.limit}
-          />
-        )}
-
-        <div className={style.info}>
-          <h1 className={style.title}>Раунд не пройден</h1>
-
-          <p className={style.description}>
-            Отдохни, соберись с мыслями и снова в бой
-          </p>
-        </div>
-
+      <AfterGame
+        showResult
+        title="Раунд не пройден"
+        subtitle="Отдохни, соберись с мыслями и снова в бой"
+      >
         <div className={style.actions}>
           <Button
             type="secondary"
@@ -44,10 +27,10 @@ export const GameFailPage = () => {
           </Button>
 
           <Button type="primary" color="red">
-            Продолжить
+            Переиграть
           </Button>
         </div>
-      </div>
+      </AfterGame>
     </LayoutWrapper>
   );
 };

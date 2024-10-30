@@ -3,31 +3,31 @@ import { useNavigate } from "react-router";
 import { Button, LayoutWrapper } from "components/core";
 import { AfterGame } from "components/core/AfterGame";
 
-import { PatternWin } from "assets";
+import { PatternNewRecord } from "assets";
 
 import style from "./index.module.scss";
 
-export const GameSuccessPage = () => {
+export const GameLevelPage = () => {
   const navigate = useNavigate();
 
   return (
-    <LayoutWrapper className={style.page} pattern={PatternWin}>
+    <LayoutWrapper className={style.page} pattern={PatternNewRecord}>
       <AfterGame
-        showResult
-        title="Раунд пройден"
-        subtitle="Так держать, только вперед"
+        title="Доступен новый уровень"
+        subtitle="Теперь ты «Ученик»"
+        isNewLevel
       >
         <div className={style.actions}>
           <Button
             type="secondary"
-            color="lime"
+            color="violet"
             onClick={() => navigate("/levels")}
           >
-            Уровни
+            Продолжить
           </Button>
 
-          <Button type="primary" color="lime">
-            Продолжить
+          <Button type="primary" color="violet">
+            Поделиться
           </Button>
         </div>
       </AfterGame>

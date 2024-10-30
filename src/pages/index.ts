@@ -1,7 +1,11 @@
-export { StartPage } from "./start-page";
-export { OnboardPage } from "./onboard";
 export { PlayPage } from "./play";
-export { LevelsPage } from "./levels";
 export { GamePage } from "./game";
-export { GameSuccessPage } from "./game-success";
+export { LevelsPage } from "./levels";
+export { OnboardPage } from "./onboard";
+export { StartPage } from "./start-page";
 export { GameFailPage } from "./game-fail";
+export { GameLevelPage } from "./game-level";
+export { GameChancePage } from "./game-chance";
+export { GameRecordPage } from "./game-record";
+export { GameSuccessPage } from "./game-success";
+export { GameSubscribePage } from "./game-subscribe";

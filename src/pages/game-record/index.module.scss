@@ -1,11 +1,9 @@
 .page {
-  background: var(--red-500);
+  background: var(--violet-500);
 }
 
 .actions {
-  max-width: 500px;
-
   display: flex;
   align-items: center;
-  gap: 17px;
+  gap: 16px;
 }

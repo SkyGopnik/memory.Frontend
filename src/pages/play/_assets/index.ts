@@ -1,1 +1,3 @@
-export { default as IconLevel } from "./level.svg";
+import IconLevel from "./level.svg";
+
+export { IconLevel };

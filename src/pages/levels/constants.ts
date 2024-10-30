@@ -10,7 +10,7 @@ import {
   ImageNumberSix,
   ImageNumberThree,
   ImageNumberTwo
-} from "./_assets";
+} from "../../assets/level-numbers";
 
 export const LEVELS: LevelProps[] = [
   {

@@ -3,13 +3,17 @@ import type { RouteObject } from "react-router";
 import { LevelsLayout, OnboardLayout, PlayLayout, GameLayout } from "layouts";
 
 import {
-  OnboardPage,
+  GamePage,
   PlayPage,
   StartPage,
   LevelsPage,
-  GamePage,
+  OnboardPage,
+  GameFailPage,
+  GameLevelPage,
+  GameChancePage,
+  GameRecordPage,
   GameSuccessPage,
-  GameFailPage
+  GameSubscribePage
 } from "pages";
 
 export const ROUTES: Array<RouteObject> = [
@@ -56,6 +60,22 @@ export const ROUTES: Array<RouteObject> = [
   {
     path: "/game/fail",
     element: <GameFailPage />
+  },
+  {
+    path: "/game/chance",
+    element: <GameChancePage />
+  },
+  {
+    path: "/game/record",
+    element: <GameRecordPage />
+  },
+  {
+    path: "/game/subscribe",
+    element: <GameSubscribePage />
+  },
+  {
+    path: "/game/level",
+    element: <GameLevelPage />
   },
   {
     element: <LevelsLayout />,

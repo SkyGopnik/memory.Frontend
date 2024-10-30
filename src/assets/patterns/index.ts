@@ -4,7 +4,7 @@ import PatterGame from "./game.svg";
 import PatternGroup from "./group.svg";
 import PatternLevels from "./levels.svg";
 import PatternNewLevel from "./new-level.svg";
-import PatternNewTime from "./new-time.svg";
+import PatternNewRecord from "./new-record.svg";
 import PatternOnboard from "./onboard.svg";
 import PatterPlay from "./play.svg";
 import PatternWin from "./win.svg";
@@ -18,6 +18,6 @@ export {
   PatternFail,
   PatternGroup,
   PatternNewLevel,
-  PatternNewTime,
+  PatternNewRecord,
   PatternWin
 };

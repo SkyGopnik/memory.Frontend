@@ -14,7 +14,7 @@ export const PlayPage = () => {
 
   return (
     <div className={style.page}>
-      <img src={ImageLogo} alt="Изображение логотипа" />
+      <ImageLogo />
 
       <PlayButton onClick={() => navigate("/game")} />
 

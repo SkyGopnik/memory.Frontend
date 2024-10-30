@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import { useGameStore } from "store";
 
+import { CloseButton } from "components/common";
 import { Info } from "components/core";
 
 import { Item } from "./_components";
@@ -13,9 +14,7 @@ import { useGame } from "./_hooks";
 
 import style from "./index.module.scss";
 
-const iconsPack = import.meta.glob(
-  "../../assets/game-icons/food-and-drink/*.png"
-);
+const iconsPack = import.meta.glob("assets/game-icons/food-and-drink/*.png");
 
 export const GamePage = () => {
   const { options, setResults } = useGameStore();
@@ -35,9 +34,9 @@ export const GamePage = () => {
     handleItemClick
   } = useGame(
     options ?? {
-      timer: 30,
-      limit: 10,
-      cards: 6
+      timer: 10,
+      limit: 5,
+      cards: 24
     }
   );
 
@@ -75,14 +74,17 @@ export const GamePage = () => {
     <div className={style.page}>
       <Info timer={timer} score={score} limit={limit} />
 
+      <CloseButton onClick={() => navigate(-2)} className={style.close} />
+
       <div className={classNames([style.game, style[`size${field.length}`]])}>
         {field.map(({ value, isActive }, index) => (
           <Item
             key={index}
             isActive={isActive || openedItems.includes(index)}
             onClick={() => handleItemClick(index)}
+            size={field.length}
           >
-            <img src={icons[value]} alt={value} />
+            <img src={icons[value]} alt={value} className={style.icon} />
           </Item>
         ))}
       </div>
