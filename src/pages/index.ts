@@ -1,5 +1,6 @@
 export { PlayPage } from "./play";
 export { GamePage } from "./game";
+export { ShopPage } from "./shop";
 export { LevelsPage } from "./levels";
 export { OnboardPage } from "./onboard";
 export { StartPage } from "./start-page";

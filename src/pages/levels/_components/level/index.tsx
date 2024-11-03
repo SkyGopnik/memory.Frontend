@@ -43,13 +43,13 @@ export const Level = ({
           {LockedLevel && <IconLock className={style.lock} />}
         </div>
 
-        <div
+        <p
           className={classNames(style.title, {
             [style.titleLocked]: LockedLevel
           })}
         >
           {title}
-        </div>
+        </p>
       </div>
 
       {isNextLocked && (

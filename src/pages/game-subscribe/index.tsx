@@ -1,5 +1,5 @@
-import { Button, LayoutWrapper } from "components/core";
-import { AfterGame } from "components/core/AfterGame";
+import { Button } from "components/core";
+import { LayoutInfo } from "components/core/LayoutInfo";
 
 import { PatternGroup } from "assets";
 
@@ -7,16 +7,19 @@ import style from "./index.module.scss";
 
 export const GameSubscribePage = () => {
   return (
-    <LayoutWrapper className={style.page} pattern={PatternGroup}>
-      <AfterGame
-        title="Новый рекорд"
-        subtitle="Теперь ты еще круче"
-        isSubscribe
-      >
+    <LayoutInfo
+      title="Подпишись на группу"
+      description="Там очень интересно"
+      className={style.page}
+      pattern={PatternGroup}
+    >
+      <div className={style.content}>
+        <img src="" alt="group" className={style.group} />
+
         <Button type="primary" color="blue" className={style.subscribe}>
           Подписаться
         </Button>
-      </AfterGame>
-    </LayoutWrapper>
+      </div>
+    </LayoutInfo>
   );
 };

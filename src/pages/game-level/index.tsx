@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router";
 
-import { Button, LayoutWrapper } from "components/core";
-import { AfterGame } from "components/core/AfterGame";
+import { Button } from "components/core";
+import { LayoutInfo } from "components/core/LayoutInfo";
 
 import { PatternNewRecord } from "assets";
+
+import { ImageNumberOne } from "../../assets/level-numbers";
 
 import style from "./index.module.scss";
 
@@ -11,12 +13,15 @@ export const GameLevelPage = () => {
   const navigate = useNavigate();
 
   return (
-    <LayoutWrapper className={style.page} pattern={PatternNewRecord}>
-      <AfterGame
-        title="Доступен новый уровень"
-        subtitle="Теперь ты «Ученик»"
-        isNewLevel
-      >
+    <LayoutInfo
+      title="Доступен новый уровень"
+      description="Теперь ты «Ученик»"
+      className={style.page}
+      pattern={PatternNewRecord}
+    >
+      <div className={style.content}>
+        <ImageNumberOne className={style.level} />
+
         <div className={style.actions}>
           <Button
             type="secondary"
@@ -30,7 +35,7 @@ export const GameLevelPage = () => {
             Поделиться
           </Button>
         </div>
-      </AfterGame>
-    </LayoutWrapper>
+      </div>
+    </LayoutInfo>
   );
 };

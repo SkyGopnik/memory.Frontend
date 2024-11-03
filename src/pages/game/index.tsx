@@ -34,7 +34,7 @@ export const GamePage = () => {
     handleItemClick
   } = useGame(
     options ?? {
-      timer: 10,
+      timer: 1,
       limit: 5,
       cards: 24
     }
@@ -72,21 +72,25 @@ export const GamePage = () => {
 
   return (
     <div className={style.page}>
-      <Info timer={timer} score={score} limit={limit} />
+      <Info timer={timer} score={score} limit={limit} className={style.info} />
 
       <CloseButton onClick={() => navigate(-2)} className={style.close} />
 
-      <div className={classNames([style.game, style[`size${field.length}`]])}>
-        {field.map(({ value, isActive }, index) => (
-          <Item
-            key={index}
-            isActive={isActive || openedItems.includes(index)}
-            onClick={() => handleItemClick(index)}
-            size={field.length}
-          >
-            <img src={icons[value]} alt={value} className={style.icon} />
-          </Item>
-        ))}
+      <div className={style.game}>
+        <div
+          className={classNames([style.fields, style[`size${field.length}`]])}
+        >
+          {field.map(({ value, isActive }, index) => (
+            <Item
+              key={index}
+              isActive={isActive || openedItems.includes(index)}
+              onClick={() => handleItemClick(index)}
+              size={field.length}
+            >
+              <img src={icons[value]} alt={value} className={style.icon} />
+            </Item>
+          ))}
+        </div>
       </div>
     </div>
   );

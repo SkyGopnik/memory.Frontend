@@ -1,11 +1,12 @@
 .page {
+  padding: 16px 0 20px;
+
   background: var(--red-500);
 }
 
 .actions {
-  max-width: 500px;
-
   display: flex;
   align-items: center;
-  gap: 17px;
+  justify-content: center;
+  gap: 16px;
 }

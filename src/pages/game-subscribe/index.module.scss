@@ -1,4 +1,6 @@
 .page {
+  padding: 40px 0 20px;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6,6 +8,29 @@
   background: var(--blue-500);
 }
 
-.subscribe {
-  width: 500px;
+.content {
+  height: 100%;
+
+  padding-top: 30px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+
+  .group {
+    width: 80px;
+    height: 80px;
+
+    border-radius: 24px;
+
+    object-fit: contain;
+
+    background: var(--base-white);
+  }
+
+  .subscribe {
+    width: 100%;
+    max-width: 500px;
+  }
 }

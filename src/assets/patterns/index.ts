@@ -7,17 +7,19 @@ import PatternNewLevel from "./new-level.svg";
 import PatternNewRecord from "./new-record.svg";
 import PatternOnboard from "./onboard.svg";
 import PatterPlay from "./play.svg";
+import PatternShop from "./shop.svg";
 import PatternWin from "./win.svg";
 
 export {
   PatterGame,
   PatterPlay,
-  PatternLevels,
-  PatternOnboard,
-  PatternChance,
+  PatternWin,
   PatternFail,
+  PatternShop,
   PatternGroup,
+  PatternLevels,
+  PatternChance,
+  PatternOnboard,
   PatternNewLevel,
-  PatternNewRecord,
-  PatternWin
+  PatternNewRecord
 };

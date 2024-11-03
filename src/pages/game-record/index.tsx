@@ -1,18 +1,33 @@
 import { useNavigate } from "react-router";
 
-import { Button, LayoutWrapper } from "components/core";
-import { AfterGame } from "components/core/AfterGame";
+import { Button } from "components/core";
+import { LayoutInfo } from "components/core/LayoutInfo";
 
-import { PatternNewRecord } from "assets";
+import { IconCoin, PatternNewRecord } from "assets";
+
+import { useGameStore } from "../../store";
 
 import style from "./index.module.scss";
 
 export const GameRecordPage = () => {
   const navigate = useNavigate();
 
+  const { results } = useGameStore();
+
   return (
-    <LayoutWrapper className={style.page} pattern={PatternNewRecord}>
-      <AfterGame title="Новый рекорд" subtitle="Теперь ты еще круче" isRecord>
+    <LayoutInfo
+      title="Новый рекорд"
+      description="Теперь ты еще круче"
+      className={style.page}
+      pattern={PatternNewRecord}
+    >
+      <div className={style.content}>
+        <div className={style.record}>
+          <IconCoin className={style.icon} />
+
+          <p className={style.results}>{results?.score}</p>
+        </div>
+
         <div className={style.actions}>
           <Button
             type="secondary"
@@ -26,7 +41,7 @@ export const GameRecordPage = () => {
             Поделиться
           </Button>
         </div>
-      </AfterGame>
-    </LayoutWrapper>
+      </div>
+    </LayoutInfo>
   );
 };

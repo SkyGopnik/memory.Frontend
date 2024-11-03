@@ -1,9 +1,22 @@
 .page {
+  padding: 40px 0 20px;
+
   background: var(--violet-500);
 }
 
-.actions {
+.content {
+  height: 100%;
+
+  padding-top: 30px;
+
   display: flex;
   align-items: center;
-  gap: 16px;
+  justify-content: space-between;
+  flex-direction: column;
+
+  .actions {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
 }
