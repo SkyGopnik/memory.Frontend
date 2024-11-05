@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router";
 import { useGameStore } from "store";
 
-import { CloseButton } from "components/common";
-import { Button, Info, LayoutWrapper } from "components/core";
+import { Button } from "components/core";
+import { LayoutInfo } from "components/core/LayoutInfo";
 
 import { PatternFail } from "assets";
 
@@ -14,40 +14,26 @@ export const GameFailPage = () => {
   const { results } = useGameStore();
 
   return (
-    <LayoutWrapper className={style.page} pattern={PatternFail}>
-      <div className={style.content}>
-        <CloseButton className={style.close} onClick={() => navigate(-2)} />
+    <LayoutInfo
+      results={results}
+      className={style.page}
+      title="Раунд не пройден"
+      description="Отдохни, соберись с мыслями и снова в бой"
+      pattern={PatternFail}
+    >
+      <div className={style.actions}>
+        <Button
+          type="secondary"
+          color="red"
+          onClick={() => navigate("/levels")}
+        >
+          Уровни
+        </Button>
 
-        {results && (
-          <Info
-            timer={results.timer}
-            score={results.score}
-            limit={results.limit}
-          />
-        )}
-
-        <div className={style.info}>
-          <h1 className={style.title}>Раунд не пройден</h1>
-
-          <p className={style.description}>
-            Отдохни, соберись с мыслями и снова в бой
-          </p>
-        </div>
-
-        <div className={style.actions}>
-          <Button
-            type="secondary"
-            color="red"
-            onClick={() => navigate("/levels")}
-          >
-            Уровни
-          </Button>
-
-          <Button type="primary" color="red">
-            Продолжить
-          </Button>
-        </div>
+        <Button type="primary" color="red">
+          Переиграть
+        </Button>
       </div>
-    </LayoutWrapper>
+    </LayoutInfo>
   );
 };

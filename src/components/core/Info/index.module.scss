@@ -5,21 +5,25 @@
 }
 
 .item {
-  padding: 6px 12px;
+  padding: 4px 8px;
 
   display: flex;
   align-items: center;
   gap: 4px;
 
-  font-size: 20px;
+  font-size: 16px;
+  font-style: normal;
   font-weight: 500;
-  line-height: 26px;
+  line-height: 20px;
 
   border-radius: 30px;
 
   background-color: var(--base-white);
 
   svg {
+    width: 16px;
+
+    height: 16px;
     fill: currentcolor;
   }
 

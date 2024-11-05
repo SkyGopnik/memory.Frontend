@@ -25,13 +25,11 @@ export const Info: FC<InfoProps> = ({ timer, limit, score = 0 }) => {
         <span>{time}</span>
       </div>
 
-      {limit && limit !== 0 && (
-        <div className={classNames(style.item, style.limit)}>
-          <IconLimit />
+      <div className={classNames(style.item, style.limit)}>
+        <IconLimit />
 
-          <span>{limit}</span>
-        </div>
-      )}
+        <span>{limit}</span>
+      </div>
 
       <div className={classNames(style.item, style.score)}>
         <IconCoin />

@@ -37,16 +37,18 @@ export const LevelsPage = () => {
         <CloseButton onClick={() => navigate(-1)} className={style.close} />
       </div>
 
-      <div className={style.list} ref={listRef}>
-        {LEVELS.map((item, index) => (
-          <Level
-            key={item.id}
-            index={index}
-            currentScore={userScore}
-            isNextLocked={index === nextLockedIndex}
-            {...item}
-          />
-        ))}
+      <div className={style.levels}>
+        <div className={style.list} ref={listRef}>
+          {LEVELS.map((item, index) => (
+            <Level
+              key={item.id}
+              index={index}
+              currentScore={userScore}
+              isNextLocked={index === nextLockedIndex}
+              {...item}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

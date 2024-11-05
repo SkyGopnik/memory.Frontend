@@ -1,17 +1,12 @@
 import classNames from "classnames";
 import type { FC, MouseEvent } from "react";
+import type { ButtonProps } from "react-html-props";
 
 import { IconArrow } from "./_assets";
 
-import type { PlayButtonProps } from "./types";
-
 import style from "./index.module.scss";
 
-export const Button: FC<PlayButtonProps> = ({
-  buttonType,
-  className,
-  ...props
-}) => {
+export const Button: FC<ButtonProps> = ({ className, ...props }) => {
   const handleClick = (event: MouseEvent<HTMLButtonElement>) =>
     props.onClick?.(event);
 
@@ -19,13 +14,9 @@ export const Button: FC<PlayButtonProps> = ({
     <button
       {...props}
       onClick={handleClick}
-      className={classNames(
-        style.button,
-        { [style.play]: buttonType === "play" },
-        className
-      )}
+      className={classNames(style.button, className)}
     >
-      {buttonType === "play" ? "Поехали" : <IconArrow />}
+      <IconArrow />
     </button>
   );
 };

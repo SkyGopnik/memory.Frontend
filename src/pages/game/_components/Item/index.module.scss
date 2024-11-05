@@ -12,20 +12,72 @@
 
   cursor: pointer;
 
-  border-radius: 30px;
+  border-radius: 16px;
 
   transition: transform .3s ease;
 
-  box-shadow: 0 8px 0 0 #FF9820;
+  box-shadow: 0 6px 0 0 #FF9820;
 
-  background-color: var(--amber-400);
-
-  img {
-    width: 60px;
-    height: 60px;
-  }
+  background: linear-gradient(136deg, #FFAE19 -31.76%, #FFE043 111.39%);
 
   @include actions.hover {
     transform: scale(1.1);
+  }
+
+  &.size6 {
+    .question {
+      width: 32px;
+      height: 48px;
+    }
+  }
+
+  &.size8 {
+    .question {
+      width: 32px;
+      height: 48px;
+    }
+  }
+
+  &.size10 {
+    .question {
+      width: 28px;
+      height: 42px;
+    }
+  }
+
+  &.size12 {
+    .question {
+      width: 28px;
+      height: 42px;
+    }
+
+    border-radius: 12px;
+  }
+
+  &.size14 {
+    .question {
+      width: 24px;
+      height: 36px;
+    }
+
+    border-radius: 20px;
+  }
+
+  &.size18 {
+    .question {
+      width: 22px;
+      height: 32px;
+    }
+
+    border-radius: 18px;
+  }
+
+  &.size24 {
+    .question {
+      width: 18px;
+      height: 27px;
+    }
+
+    border-radius: 16px;
   }
 }

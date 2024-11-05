@@ -4,55 +4,109 @@
   width: 100%;
   height: 100%;
 
+  padding-top: 16px;
+
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 23px;
+  gap: 30px;
+}
+
+.close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
 }
 
 .game {
-  display: grid;
+  width: 100%;
+  height: 100%;
 
-  &.size6 {
-    grid-template-columns: repeat(3, 120px);
-    gap: 20px;
-    grid-template-rows: repeat(2, 120px);
-  }
+  padding-bottom: 50px;
 
-  &.size8 {
-    grid-template-columns: repeat(4, 120px);
-    gap: 20px;
-    grid-template-rows: repeat(2, 120px);
-  }
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
-  &.size10 {
-    grid-template-columns: repeat(5, 110px);
-    gap: 20px;
-    grid-template-rows: repeat(2, 110px);
-  }
+  .fields {
+    display: grid;
 
-  &.size12 {
-    grid-template-columns: repeat(6, 100px);
-    gap: 20px;
-    grid-template-rows: repeat(2, 100px);
-  }
+    &.size6 {
+      grid-template-columns: repeat(3, 90px);
+      gap: 20px;
+      grid-template-rows: repeat(2, 90px);
 
-  &.size14 {
-    grid-template-columns: repeat(7, 90px);
-    gap: 16px;
-    grid-template-rows: repeat(2, 90px);
-  }
+      .icon {
+        width: 48px;
+        height: 48px;
+      }
+    }
 
-  &.size18 {
-    grid-template-columns: repeat(6, 80px);
-    gap: 16px;
-    grid-template-rows: repeat(3, 80px);
-  }
+    &.size8 {
+      grid-template-columns: repeat(4, 90px);
+      gap: 20px;
+      grid-template-rows: repeat(2, 90px);
 
-  &.size24 {
-    grid-template-columns: repeat(8, 70px);
-    gap: 16px;
-    grid-template-rows: repeat(3, 70px);
+      .icon {
+        width: 48px;
+        height: 48px;
+      }
+    }
+
+    &.size10 {
+      grid-template-columns: repeat(5, 80px);
+      gap: 20px;
+      grid-template-rows: repeat(2, 80px);
+
+      .icon {
+        width: 42px;
+        height: 42px;
+      }
+    }
+
+    &.size12 {
+      grid-template-columns: repeat(6, 80px);
+      gap: 20px;
+      grid-template-rows: repeat(2, 80px);
+
+      .icon {
+        width: 42px;
+        height: 42px;
+      }
+    }
+
+    &.size14 {
+      grid-template-columns: repeat(7, 70px);
+      gap: 16px;
+      grid-template-rows: repeat(2, 70px);
+
+      .icon {
+        width: 36px;
+        height: 36px;
+      }
+    }
+
+    &.size18 {
+      grid-template-columns: repeat(6, 64px);
+      gap: 14px;
+      grid-template-rows: repeat(3, 64px);
+
+      .icon {
+        width: 32px;
+        height: 32px;
+      }
+    }
+
+    &.size24 {
+      grid-template-columns: repeat(8, 56px);
+      gap: 14px;
+      grid-template-rows: repeat(3, 56px);
+
+      .icon {
+        width: 27px;
+        height: 27px;
+      }
+    }
   }
 }

@@ -9,7 +9,6 @@ import style from "./index.module.scss";
 export const Stepper: FunctionComponent<Step> = ({
   image,
   title,
-  buttonType,
   description,
   onActionClick
 }) => {
@@ -26,11 +25,7 @@ export const Stepper: FunctionComponent<Step> = ({
           <p className={style.description}>{description}</p>
         </div>
 
-        <Button
-          className={style.button}
-          onClick={onActionClick}
-          buttonType={buttonType}
-        />
+        <Button className={style.button} onClick={onActionClick} />
       </div>
     </div>
   );

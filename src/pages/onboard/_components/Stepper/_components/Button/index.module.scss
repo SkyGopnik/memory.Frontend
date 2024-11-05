@@ -1,8 +1,8 @@
 @use "style/mixins/actions";
 
 .button {
-  min-width: 50px;
-  height: 50px;
+  min-width: 40px;
+  height: 40px;
 
   display: flex;
   align-items: center;
@@ -19,25 +19,5 @@
     transition: all .3s ease;
 
     opacity: 0.3
-  }
-
-  &.play {
-    width: auto;
-
-    padding: 0 25px;
-
-    animation: breath 1.5s ease infinite alternate;
-
-    border-radius: 25px;
-  }
-}
-
-@keyframes breath {
-  0% {
-    transform: scale(1);
-  }
-
-  100% {
-    transform: scale(1.1);
   }
 }

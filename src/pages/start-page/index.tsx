@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 
 import { PlayButton } from "components/common";
 
-import { storage } from "../../utils";
+import { storage } from "utils";
 
 import { ImageLogo } from "assets";
 
@@ -22,7 +22,7 @@ export const StartPage = () => {
 
   return (
     <div className={style.page}>
-      <img src={ImageLogo} alt="Изображение логотипа" />
+      <ImageLogo />
 
       <PlayButton onClick={() => navigate("/onboard")} />
     </div>
