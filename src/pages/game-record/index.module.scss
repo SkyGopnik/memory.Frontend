@@ -3,10 +3,39 @@
 }
 
 .content {
-  padding: 70px 0 20px;
+  padding: 40px 0 20px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
+}
+
+.record {
+  margin-bottom: 32px;
+  padding: 10px 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  border: 8px solid var(--violet-200);
+  border-radius: 43.796px;
+
+  color: var(--base-white);
+  background: var(--violet-700);
+
+  .results {
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 36px;
+  }
+
+  .icon {
+    width: 32px;
+    height: 32px;
+
+    fill: currentcolor;
+  }
 }

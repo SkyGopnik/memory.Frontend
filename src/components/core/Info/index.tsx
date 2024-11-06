@@ -2,6 +2,8 @@ import classNames from "classnames";
 import type { FC } from "react";
 import { useMemo } from "react";
 
+import { formatTime } from "utils/formatTime";
+
 import { IconCoin, IconLimit, IconTime } from "assets";
 
 import type { InfoProps } from "./types";
@@ -9,13 +11,7 @@ import type { InfoProps } from "./types";
 import style from "./index.module.scss";
 
 export const Info: FC<InfoProps> = ({ timer, limit, score = 0 }) => {
-  const time = useMemo(() => {
-    const date = new Date(timer * 1000);
-
-    const seconds = date.getSeconds();
-
-    return `${date.getMinutes()}:${seconds < 10 ? `0${seconds}` : seconds}`;
-  }, [timer]);
+  const time = useMemo(() => formatTime(timer), [timer]);
 
   return (
     <div className={style.info}>

@@ -99,7 +99,11 @@ export const useGame = (options: GameOptions) => {
   }, [openedItems]);
 
   const handleItemClick = (index: number) => {
-    if (openedItems.includes(index) || openedItems.length === 2) {
+    if (
+      openedItems.includes(index) ||
+      openedItems.length === 2 ||
+      field[index].isActive
+    ) {
       return;
     }
 
