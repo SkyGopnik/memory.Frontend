@@ -1,2 +1,2 @@
 export { useGameStore } from "./game";
-export type { GameStore, GameCards, GameOptions } from "./types";
+export type { GameStore, GameCards, GameOptions, GameResults } from "./types";

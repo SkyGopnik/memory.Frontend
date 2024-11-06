@@ -1,8 +1,10 @@
-import type { ComponentType, SVGProps } from "react";
+import type { FC, SVGProps } from "react";
 
 export interface LevelProps {
-  id: number;
   title: string;
+  image: FC<SVGProps<SVGSVGElement>>;
+  currentScore: number;
   requiredScore: number;
-  imageSrc: ComponentType<SVGProps<SVGSVGElement>>;
+  isActive?: boolean;
+  isLocked?: boolean;
 }

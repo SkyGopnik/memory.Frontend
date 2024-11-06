@@ -25,7 +25,7 @@ export const OnboardPage = () => {
       return;
     }
 
-    storage.set("isOnboardSuccess", { data: true });
+    storage.set("isOnboardSuccess", true);
     navigate("/play");
   };
 

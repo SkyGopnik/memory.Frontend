@@ -63,10 +63,12 @@
   }
 
   &.level {
-    background-color: var(--emerald-100);
+    color: var(--indigo-500);
+    background-color: var(--indigo-100);
   }
 
   &.shop {
+    color: var(--emerald-500);
     background-color: var(--emerald-100);
   }
 

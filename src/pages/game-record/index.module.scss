@@ -1,22 +1,12 @@
 .page {
-  padding: 40px 0 20px;
-
   background: var(--violet-500);
 }
 
 .content {
-  height: 100%;
-
-  padding-top: 30px;
+  padding: 70px 0 20px;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
-
-  .actions {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
 }

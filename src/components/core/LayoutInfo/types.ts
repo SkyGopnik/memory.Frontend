@@ -1,8 +1,13 @@
+import type { ReactNode } from "react";
+import type { GameResults } from "store";
+
 import type { LayoutWrapperProps } from "../LayoutWrapper/types";
-import type { GameResults } from "store/game/types";
 
 export interface LayoutInfoProps extends LayoutWrapperProps {
+  contentClassName?: string;
   title: string;
   description: string;
-  results?: GameResults;
+  stats?: GameResults;
+  actions?: ReactNode;
+  onClose?: () => void;
 }

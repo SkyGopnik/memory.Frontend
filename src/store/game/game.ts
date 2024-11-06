@@ -7,6 +7,13 @@ export const useGameStore = create<GameStore>((set) => ({
     set({
       options
     }),
+  updateOptions: (options) =>
+    set((state) => ({
+      options: {
+        ...state.options!,
+        ...options
+      }
+    })),
   setResults: (results) =>
     set({
       results

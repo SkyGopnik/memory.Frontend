@@ -1,10 +1,11 @@
 export const storage = {
   set: (key: string, value: unknown) => {
-    localStorage.setItem(key, JSON.stringify(value));
+    localStorage.setItem(
+      key,
+      typeof value === "object" ? JSON.stringify(value) : String(value)
+    );
   },
-  get: (key: string) => {
-    const storage = localStorage.getItem(key);
-
-    return storage ? JSON.parse(storage) : undefined;
+  get: (key: string): string | null => {
+    return localStorage.getItem(key);
   }
 };

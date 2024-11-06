@@ -1,6 +1,7 @@
 import classNames from "classnames";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router";
+import type { GameOptions } from "store";
 import { useGameStore } from "store";
 
 import { CloseButton } from "components/common";
@@ -8,7 +9,7 @@ import { Info } from "components/core";
 
 import { Item } from "./_components";
 
-import { useUpdateEffect } from "hooks";
+import { useScore, useUpdateEffect } from "hooks";
 
 import { useGame } from "./_hooks";
 
@@ -17,11 +18,22 @@ import style from "./index.module.scss";
 const iconsPack = import.meta.glob("assets/game-icons/food-and-drink/*.png");
 
 export const GamePage = () => {
-  const { options, setResults } = useGameStore();
-
   const navigate = useNavigate();
 
+  const { options: gameOptions, setResults, updateOptions } = useGameStore();
+  const { addScore } = useScore();
+
   const [icons, setIcons] = useState<Record<string, string>>({});
+
+  const options: GameOptions = useMemo(
+    () =>
+      gameOptions ?? {
+        timer: 1,
+        limit: 5,
+        cards: 24
+      },
+    [gameOptions]
+  );
 
   const {
     timer,
@@ -32,13 +44,7 @@ export const GamePage = () => {
     isGameComplete,
     isGameOver,
     handleItemClick
-  } = useGame(
-    options ?? {
-      timer: 1,
-      limit: 5,
-      cards: 24
-    }
-  );
+  } = useGame(options);
 
   useEffect(() => {
     (async () => {
@@ -67,6 +73,21 @@ export const GamePage = () => {
       limit
     });
 
+    const attempts = (options?.attempts ?? 0) - 1;
+
+    if (!isGameComplete && attempts >= 0) {
+      updateOptions({
+        attempts
+      });
+
+      navigate("/game/chance");
+      return;
+    }
+
+    if (isGameComplete) {
+      addScore(score);
+    }
+
     navigate(isGameComplete ? "/game/success" : "/game/fail");
   }, [isGameOver]);
 
@@ -87,7 +108,7 @@ export const GamePage = () => {
               onClick={() => handleItemClick(index)}
               size={field.length}
             >
-              <img src={icons[value]} alt={value} className={style.icon} />
+              <img className={style.icon} src={icons[value]} alt={value} />
             </Item>
           ))}
         </div>

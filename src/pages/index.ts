@@ -9,4 +9,3 @@ export { GameLevelPage } from "./game-level";
 export { GameChancePage } from "./game-chance";
 export { GameRecordPage } from "./game-record";
 export { GameSuccessPage } from "./game-success";
-export { GameSubscribePage } from "./game-subscribe";

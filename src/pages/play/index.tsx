@@ -1,7 +1,13 @@
 import classNames from "classnames";
+import { useEffect } from "react";
 import { useNavigate } from "react-router";
+import { useGameStore } from "store";
 
 import { PlayButton } from "components/common";
+
+import { useLevels, useScore } from "hooks";
+
+import { storage } from "utils";
 
 import { IconCoin, ImageLogo } from "assets";
 
@@ -12,28 +18,59 @@ import style from "./index.module.scss";
 export const PlayPage = () => {
   const navigate = useNavigate();
 
+  const { results, setOptions } = useGameStore();
+
+  const { score } = useScore();
+  const { currentLevel } = useLevels();
+
+  // TODO: Исправить логику показа, сделать после завершения раунда, до game/success
+  useEffect(() => {
+    if (!results) {
+      return;
+    }
+
+    const isRecordShown = storage.get(
+      `isRecordShown-${currentLevel.label}-${results?.timer}`
+    );
+
+    if (Boolean(isRecordShown)) {
+      return;
+    }
+
+    navigate("/game/record");
+  });
+
+  const startGame = () => {
+    setOptions({
+      ...currentLevel.gameOptions,
+      attempts: 1
+    });
+
+    navigate("/game");
+  };
+
   return (
     <div className={style.page}>
       <ImageLogo />
 
-      <PlayButton onClick={() => navigate("/game")} />
+      <PlayButton onClick={startGame} />
 
       <div className={style.actions}>
         <div className={style.pages}>
-          <button
-            className={classNames(style.icon, style.level)}
-            aria-label="Уровни"
-            onClick={() => navigate("/levels")}
-          >
-            <IconLevel />
-          </button>
-
           <button
             className={classNames(style.icon, style.shop)}
             aria-label="Магазин"
             onClick={() => navigate("/shop")}
           >
             <IconShop />
+          </button>
+
+          <button
+            className={classNames(style.icon, style.level)}
+            aria-label="Уровни"
+            onClick={() => navigate("/levels")}
+          >
+            <IconLevel />
           </button>
         </div>
 
@@ -43,7 +80,7 @@ export const PlayPage = () => {
         >
           <IconCoin />
 
-          <span>1000</span>
+          <span>{score}</span>
         </button>
       </div>
     </div>

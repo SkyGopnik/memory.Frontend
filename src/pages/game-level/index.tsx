@@ -1,41 +1,46 @@
 import { useNavigate } from "react-router";
 
-import { Button } from "components/core";
-import { LayoutInfo } from "components/core/LayoutInfo";
+import { Button, LayoutInfo } from "components/core";
+
+import { useLevels } from "hooks";
+
+import { storage } from "utils";
 
 import { PatternNewRecord } from "assets";
-
-import { ImageNumberOne } from "../../assets/level-numbers";
 
 import style from "./index.module.scss";
 
 export const GameLevelPage = () => {
   const navigate = useNavigate();
 
+  const { currentLevel } = useLevels();
+
+  const handleClose = () => {
+    storage.set(`isLevelShown-${currentLevel.label}`, true);
+    navigate("/play");
+  };
+
   return (
     <LayoutInfo
-      title="Доступен новый уровень"
-      description="Теперь ты «Ученик»"
       className={style.page}
+      contentClassName={style.content}
+      title="Доступен новый уровень"
+      description={`Теперь ты «${currentLevel.label}»`}
       pattern={PatternNewRecord}
-    >
-      <div className={style.content}>
-        <ImageNumberOne className={style.level} />
-
-        <div className={style.actions}>
-          <Button
-            type="secondary"
-            color="violet"
-            onClick={() => navigate("/levels")}
-          >
+      actions={
+        <>
+          <Button type="secondary" color="violet" onClick={handleClose}>
             Продолжить
           </Button>
 
           <Button type="primary" color="violet">
             Поделиться
           </Button>
-        </div>
-      </div>
+        </>
+      }
+      onClose={handleClose}
+    >
+      <currentLevel.image className={style.level} />
     </LayoutInfo>
   );
 };

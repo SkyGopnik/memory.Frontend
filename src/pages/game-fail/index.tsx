@@ -1,8 +1,7 @@
 import { useNavigate } from "react-router";
 import { useGameStore } from "store";
 
-import { Button } from "components/core";
-import { LayoutInfo } from "components/core/LayoutInfo";
+import { Button, LayoutInfo } from "components/core";
 
 import { PatternFail } from "assets";
 
@@ -13,27 +12,32 @@ export const GameFailPage = () => {
 
   const { results } = useGameStore();
 
+  const handleClose = () => navigate("/play");
+
   return (
     <LayoutInfo
-      results={results}
       className={style.page}
+      contentClassName={style.content}
+      stats={results}
       title="Раунд не пройден"
       description="Отдохни, соберись с мыслями и снова в бой"
       pattern={PatternFail}
-    >
-      <div className={style.actions}>
-        <Button
-          type="secondary"
-          color="red"
-          onClick={() => navigate("/levels")}
-        >
-          Уровни
-        </Button>
+      actions={
+        <>
+          <Button
+            type="secondary"
+            color="red"
+            onClick={() => navigate("/levels")}
+          >
+            Уровни
+          </Button>
 
-        <Button type="primary" color="red">
-          Переиграть
-        </Button>
-      </div>
-    </LayoutInfo>
+          <Button type="primary" color="red" onClick={handleClose}>
+            Продолжить
+          </Button>
+        </>
+      }
+      onClose={handleClose}
+    />
   );
 };

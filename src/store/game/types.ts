@@ -4,6 +4,7 @@ export type GameOptions = {
   timer: number;
   limit?: number;
   cards: GameCards;
+  attempts?: number;
 };
 
 export type GameResults = {
@@ -17,4 +18,5 @@ export type GameStore = {
   options?: GameOptions;
   setResults: (results: GameResults) => void;
   setOptions: (options: GameOptions) => void;
+  updateOptions: (options: Partial<GameOptions>) => void;
 };

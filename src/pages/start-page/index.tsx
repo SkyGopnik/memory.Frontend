@@ -15,7 +15,7 @@ export const StartPage = () => {
   useEffect(() => {
     const result = storage.get("isOnboardSuccess");
 
-    if (result?.data) {
+    if (Boolean(result)) {
       navigate("/play");
     }
   });

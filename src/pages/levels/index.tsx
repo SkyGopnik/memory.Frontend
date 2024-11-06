@@ -1,20 +1,22 @@
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useNavigate } from "react-router";
 
 import { CloseButton } from "components/common";
 
 import { Level } from "./_components/level";
 
-import { LEVELS } from "./constants";
+import { useLevels, useScore } from "hooks";
 
 import style from "./index.module.scss";
 
 export const LevelsPage = () => {
   const navigate = useNavigate();
-  const [userScore, setUserScore] = useState(228);
+
+  const { score } = useScore();
+  const { LEVELS } = useLevels();
 
   const nextLockedIndex = LEVELS.findIndex(
-    (item) => item.requiredScore > userScore
+    (item) => item.requiredScore > score
   );
 
   const lastAvailableLevelIndex =
@@ -41,11 +43,13 @@ export const LevelsPage = () => {
         <div className={style.list} ref={listRef}>
           {LEVELS.map((item, index) => (
             <Level
-              key={item.id}
-              index={index}
-              currentScore={userScore}
-              isNextLocked={index === nextLockedIndex}
-              {...item}
+              key={index}
+              title={item.label}
+              image={item.image}
+              currentScore={score}
+              requiredScore={item.requiredScore}
+              isLocked={item.requiredScore > score}
+              isActive={lastAvailableLevelIndex === index}
             />
           ))}
         </div>

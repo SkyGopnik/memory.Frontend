@@ -19,8 +19,7 @@ import {
   GameLevelPage,
   GameChancePage,
   GameRecordPage,
-  GameSuccessPage,
-  GameSubscribePage
+  GameSuccessPage
 } from "pages";
 
 export const ROUTES: Array<RouteObject> = [
@@ -93,10 +92,6 @@ export const ROUTES: Array<RouteObject> = [
   {
     path: "/game/record",
     element: <GameRecordPage />
-  },
-  {
-    path: "/game/subscribe",
-    element: <GameSubscribePage />
   },
   {
     path: "/game/level",
