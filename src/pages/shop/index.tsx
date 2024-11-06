@@ -2,9 +2,9 @@ import { useNavigate } from "react-router";
 
 import { CloseButton } from "components/common";
 
-import { Product } from "./_components/goods";
+import { Item } from "./_components";
 
-import { GOODS } from "./constants";
+import { IconAnimals } from "assets/shop-icons";
 
 import style from "./index.module.scss";
 
@@ -21,8 +21,8 @@ export const ShopPage = () => {
 
       <div className={style.goods}>
         <div className={style.list}>
-          {GOODS.map((item, index) => (
-            <Product key={index} {...item} />
+          {[].map((item, index) => (
+            <Item key={index} title="dw" price={2000} icon={IconAnimals} />
           ))}
         </div>
       </div>

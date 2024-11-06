@@ -18,7 +18,7 @@ export const LEVELS: Array<LevelItem> = [
     image: ImageNumberOne,
     requiredScore: 0,
     gameOptions: {
-      timer: 5,
+      timer: 3000,
       cards: 6
     }
   },
@@ -27,7 +27,7 @@ export const LEVELS: Array<LevelItem> = [
     image: ImageNumberTwo,
     requiredScore: 10,
     gameOptions: {
-      timer: 5,
+      timer: 30,
       cards: 8
     }
   },

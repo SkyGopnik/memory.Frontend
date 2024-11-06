@@ -17,8 +17,20 @@ export const useScore = () => {
     storage.set("score", newScore);
   };
 
+  const minusScore = (value: number) => {
+    const newScore = score - value;
+
+    if (newScore < 0) {
+      return;
+    }
+
+    setScore(newScore);
+    storage.set("score", newScore);
+  };
+
   return {
     score,
-    addScore
+    addScore,
+    minusScore
   };
 };

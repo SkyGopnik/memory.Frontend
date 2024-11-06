@@ -6,10 +6,6 @@
 
   position: relative;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   cursor: pointer;
 
   border-radius: 16px;
@@ -20,8 +16,19 @@
 
   background: linear-gradient(136deg, #FFAE19 -31.76%, #FFE043 111.39%);
 
+  perspective: 1000px;
+  transform-style: preserve-3d;
+
   @include actions.hover {
     transform: scale(1.1);
+  }
+
+  &.active {
+    transform: rotateY(180deg);
+
+    @include actions.hover {
+      transform: rotateY(180deg) scale(1.1);
+    }
   }
 
   &.size6 {
@@ -80,4 +87,23 @@
 
     border-radius: 16px;
   }
+}
+
+.front, .back {
+  width: 100%;
+  height: 100%;
+
+  position: absolute;
+  top: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+.back {
+  transform: rotateY(180deg);
 }

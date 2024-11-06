@@ -5,27 +5,24 @@ import { useUpdateEffect } from "hooks";
 
 import { getRandomElements, getShuffledElements } from "./utils";
 
-import { FOOD_AND_DRINK_ICONS } from "../constants";
-
 type FieldItem = {
   isActive: boolean;
+  isOpened: boolean;
   value: string;
 };
 
-export const useGame = (options: GameOptions) => {
+export const useGame = (icons: Array<string>, options: GameOptions) => {
   const [timer, setTimer] = useState(options.timer);
   const [limit, setLimit] = useState(options.limit);
   const [score, setScore] = useState(0);
 
   const [field, setField] = useState<Array<FieldItem>>(() => {
-    const randomIcons = getRandomElements(
-      FOOD_AND_DRINK_ICONS,
-      options.cards / 2
-    );
+    const randomIcons = getRandomElements(icons, options.cards / 2);
     const iconsPairs = [...randomIcons, ...randomIcons];
 
     return getShuffledElements(iconsPairs).map((value) => ({
       value,
+      isOpened: false,
       isActive: false
     }));
   });
@@ -41,6 +38,16 @@ export const useGame = (options: GameOptions) => {
     () => limit === 0 || timer === 0 || isGameComplete,
     [limit, timer, isGameComplete]
   );
+
+  useEffect(() => {
+    setField(field.map((item) => ({ ...item, isOpened: true })));
+
+    const timeout = setTimeout(() => {
+      setField(field.map((item) => ({ ...item, isOpened: false })));
+    }, 1000);
+
+    return () => clearTimeout(timeout);
+  }, []);
 
   const decreaseLimit = () => {
     if (!limit) {
@@ -102,7 +109,8 @@ export const useGame = (options: GameOptions) => {
     if (
       openedItems.includes(index) ||
       openedItems.length === 2 ||
-      field[index].isActive
+      field[index].isActive ||
+      field[index].isOpened
     ) {
       return;
     }

@@ -13,9 +13,11 @@ import { useScore, useUpdateEffect } from "hooks";
 
 import { useGame } from "./_hooks";
 
+import { FOOD_AND_DRINK_ICONS } from "./constants";
+
 import style from "./index.module.scss";
 
-const iconsPack = import.meta.glob("assets/game-icons/food-and-drink/*.png");
+const iconsPack = import.meta.glob("assets/game-icons/*.png");
 
 export const GamePage = () => {
   const navigate = useNavigate();
@@ -44,7 +46,7 @@ export const GamePage = () => {
     isGameComplete,
     isGameOver,
     handleItemClick
-  } = useGame(options);
+  } = useGame(FOOD_AND_DRINK_ICONS, options);
 
   useEffect(() => {
     (async () => {
@@ -59,7 +61,12 @@ export const GamePage = () => {
         }
 
         // @ts-expect-error dynamic import
-        iconsModules[iconName] = (await iconsPack[path]()).default as string;
+        const iconPath = (await iconsPack[path]()).default as string;
+
+        const image = new Image();
+        image.src = iconPath;
+
+        iconsModules[iconName] = iconPath;
       }
 
       setIcons(iconsModules);
@@ -101,10 +108,10 @@ export const GamePage = () => {
         <div
           className={classNames([style.fields, style[`size${field.length}`]])}
         >
-          {field.map(({ value, isActive }, index) => (
+          {field.map(({ value, isOpened, isActive }, index) => (
             <Item
               key={index}
-              isActive={isActive || openedItems.includes(index)}
+              isActive={isActive || isOpened || openedItems.includes(index)}
               onClick={() => handleItemClick(index)}
               size={field.length}
             >

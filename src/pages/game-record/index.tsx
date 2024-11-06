@@ -23,8 +23,6 @@ export const GameRecordPage = () => {
     navigate(-1);
   };
 
-  const time = formatTime(64);
-
   return (
     <LayoutInfo
       className={style.page}
@@ -48,7 +46,7 @@ export const GameRecordPage = () => {
       <div className={style.record}>
         <IconTime className={style.icon} />
 
-        <p className={style.results}>{time}</p>
+        <p className={style.results}>{formatTime(64)}</p>
       </div>
     </LayoutInfo>
   );

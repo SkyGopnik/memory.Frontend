@@ -14,6 +14,10 @@ export const Item: FC<ItemProps> = ({ isActive, children, onClick, size }) => (
     })}
     onClick={onClick}
   >
-    {isActive ? children : <IconQuestion className={style.question} />}
+    <span className={style.front}>
+      <IconQuestion className={style.question} />
+    </span>
+
+    <span className={style.back}>{children}</span>
   </button>
 );

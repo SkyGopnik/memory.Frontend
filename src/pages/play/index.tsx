@@ -1,13 +1,10 @@
 import classNames from "classnames";
-import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useGameStore } from "store";
 
 import { PlayButton } from "components/common";
 
 import { useLevels, useScore } from "hooks";
-
-import { storage } from "utils";
 
 import { IconCoin, ImageLogo } from "assets";
 
@@ -18,27 +15,10 @@ import style from "./index.module.scss";
 export const PlayPage = () => {
   const navigate = useNavigate();
 
-  const { results, setOptions } = useGameStore();
+  const { setOptions } = useGameStore();
 
   const { score } = useScore();
   const { currentLevel } = useLevels();
-
-  // TODO: Исправить логику показа, сделать после завершения раунда, до game/success
-  useEffect(() => {
-    if (!results) {
-      return;
-    }
-
-    const isRecordShown = storage.get(
-      `isRecordShown-${currentLevel.label}-${results?.timer}`
-    );
-
-    if (Boolean(isRecordShown)) {
-      return;
-    }
-
-    navigate("/game/record");
-  });
 
   const startGame = () => {
     setOptions({
