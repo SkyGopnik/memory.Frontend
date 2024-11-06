@@ -6,8 +6,9 @@ import { Button, LayoutInfo } from "components/core";
 import { useLevels } from "hooks";
 
 import { storage } from "utils";
+import { formatTime } from "utils/formatTime";
 
-import { IconCoin, PatternNewRecord } from "assets";
+import { IconTime, PatternNewRecord } from "assets";
 
 import style from "./index.module.scss";
 
@@ -21,6 +22,8 @@ export const GameRecordPage = () => {
     storage.set(`isRecordShown-${currentLevel.label}-${results?.timer}`, true);
     navigate(-1);
   };
+
+  const time = formatTime(64);
 
   return (
     <LayoutInfo
@@ -43,9 +46,9 @@ export const GameRecordPage = () => {
       onClose={handleClose}
     >
       <div className={style.record}>
-        <IconCoin className={style.icon} />
+        <IconTime className={style.icon} />
 
-        <p className={style.results}>{results?.timer}</p>
+        <p className={style.results}>{time}</p>
       </div>
     </LayoutInfo>
   );
