@@ -4,12 +4,27 @@ import { CloseButton } from "components/common";
 
 import { Item } from "./_components";
 
-import { IconAnimals } from "assets/shop-icons";
+import type { ThemeItem } from "hooks";
+import { useScore, useThemes } from "hooks";
 
 import style from "./index.module.scss";
 
 export const ShopPage = () => {
   const navigate = useNavigate();
+
+  const { THEMES, activeTheme, ownedThemes, setTheme, addTheme } = useThemes();
+  const { score, minusScore } = useScore();
+
+  const handlePurchase = (item: ThemeItem) => {
+    const newScore = score - item.price;
+
+    if (newScore < 0) {
+      return;
+    }
+
+    minusScore(item.price);
+    addTheme(item.value);
+  };
 
   return (
     <div className={style.page}>
@@ -21,8 +36,15 @@ export const ShopPage = () => {
 
       <div className={style.goods}>
         <div className={style.list}>
-          {[].map((item, index) => (
-            <Item key={index} title="dw" price={2000} icon={IconAnimals} />
+          {THEMES.map((item, index) => (
+            <Item
+              key={index}
+              {...item}
+              isOwned={item.price === 0 || ownedThemes.includes(item.value)}
+              isSelected={activeTheme === item.value}
+              onInstall={() => setTheme(item.value)}
+              onPurchase={() => handlePurchase(item)}
+            />
           ))}
         </div>
       </div>

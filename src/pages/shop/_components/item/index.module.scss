@@ -15,10 +15,6 @@
 
   background: var(--base-white);
 
-  &.unlocked {
-    background: var(--emerald-600);
-  }
-
   &:first-child {
     margin-left: 60px;
   }
@@ -26,51 +22,63 @@
   &:last-child {
     margin-right: 80px;
   }
+}
 
-  .content {
-    width: 100%;
-    height: 100%;
+.content {
+  width: 100%;
+  height: 100%;
 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+
+  .head {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
     flex-direction: column;
 
-    .head {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
+    gap: 12px;
 
-      gap: 12px;
+    color: var(--emerald-500);
 
-      .title {
-        font-size: 16px;
-        font-style: normal;
-        font-weight: 700;
-        line-height: 20px;
+    .title {
+      font-size: 16px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 20px;
 
-        text-align: center;
-
-        color: var(--emerald-500);
-      }
-
-      .icon {
-        width: 42px;
-        height: 42px;
-      }
+      text-align: center;
     }
 
-    .buy {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 4px;
+    .icon {
+      width: 42px;
+      height: 42px;
 
-      .coin {
-        width: 12px;
-        height: 12px;
-      }
+      fill: currentcolor;
     }
+  }
+
+  .buy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+
+    .coin {
+      width: 12px;
+      height: 12px;
+
+      fill: var(--base-white);
+    }
+  }
+}
+
+.item.unlocked {
+  background: var(--emerald-600);
+
+  .head {
+    color: var(--base-white);
   }
 }

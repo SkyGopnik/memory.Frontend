@@ -9,11 +9,9 @@ import { Info } from "components/core";
 
 import { Item } from "./_components";
 
-import { useScore, useUpdateEffect } from "hooks";
+import { useScore, useThemes, useUpdateEffect } from "hooks";
 
 import { useGame } from "./_hooks";
-
-import { FOOD_AND_DRINK_ICONS } from "./constants";
 
 import style from "./index.module.scss";
 
@@ -23,7 +21,9 @@ export const GamePage = () => {
   const navigate = useNavigate();
 
   const { options: gameOptions, setResults, updateOptions } = useGameStore();
+
   const { addScore } = useScore();
+  const { currentTheme } = useThemes();
 
   const [icons, setIcons] = useState<Record<string, string>>({});
 
@@ -46,7 +46,7 @@ export const GamePage = () => {
     isGameComplete,
     isGameOver,
     handleItemClick
-  } = useGame(FOOD_AND_DRINK_ICONS, options);
+  } = useGame(currentTheme.icons, options);
 
   useEffect(() => {
     (async () => {

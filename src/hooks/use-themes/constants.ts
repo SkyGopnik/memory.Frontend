@@ -1,8 +1,10 @@
 import { IconAnimals, IconProfessions, IconSports } from "assets/shop-icons";
 
-export const THEMES = [
+import type { ThemeItem } from "./types";
+
+export const THEMES: Array<ThemeItem> = [
   {
-    label: "Еда",
+    title: "Еда",
     value: "food",
     price: 0,
     icon: IconSports,
@@ -133,7 +135,7 @@ export const THEMES = [
     ]
   },
   {
-    label: "Путешествия",
+    title: "Путешествия",
     value: "travel",
     price: 200,
     icon: IconProfessions,
@@ -266,7 +268,7 @@ export const THEMES = [
     ]
   },
   {
-    label: "Животные",
+    title: "Животные",
     value: "animals",
     price: 500,
     icon: IconAnimals,
