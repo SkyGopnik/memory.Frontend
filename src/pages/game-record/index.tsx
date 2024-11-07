@@ -5,8 +5,13 @@ import { Button, LayoutInfo } from "components/core";
 
 import { useLevels } from "hooks";
 
-import { storage } from "utils";
-import { formatTime } from "utils/formatTime";
+import {
+  storage,
+  shareOnWall,
+  formatTime,
+  formatTimeText,
+  formatShareMessage
+} from "utils";
 
 import { IconTime, PatternNewRecord } from "assets";
 
@@ -18,9 +23,24 @@ export const GameRecordPage = () => {
   const { results } = useGameStore();
   const { currentLevel } = useLevels();
 
+  const time = 122;
+
   const handleClose = () => {
     storage.set(`isRecordShown-${currentLevel.label}-${results?.timer}`, true);
     navigate(-1);
+  };
+
+  const handleShare = async () => {
+    if (!results) return;
+
+    const timeText = formatTimeText(time);
+    const message = formatShareMessage(timeText, results.score);
+
+    const data = await shareOnWall(message);
+
+    if (!data) {
+      return;
+    }
   };
 
   return (
@@ -36,7 +56,7 @@ export const GameRecordPage = () => {
             Продолжить
           </Button>
 
-          <Button type="primary" color="violet">
+          <Button type="primary" color="violet" onClick={handleShare}>
             Поделиться
           </Button>
         </>
@@ -46,7 +66,7 @@ export const GameRecordPage = () => {
       <div className={style.record}>
         <IconTime className={style.icon} />
 
-        <p className={style.results}>{formatTime(64)}</p>
+        <p className={style.results}>{formatTime(time)}</p>
       </div>
     </LayoutInfo>
   );
