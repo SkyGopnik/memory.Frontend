@@ -1,4 +1,4 @@
-import { getPluralOfNumber } from "./getPluralRules";
+import { getPluralOfNumber } from "utils";
 
 export const formatShareMessage = (timeText: string, score: number): string => {
   const coinText = `${score} ${getPluralOfNumber(score, {

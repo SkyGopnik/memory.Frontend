@@ -7,6 +7,8 @@ import { useLevels } from "hooks";
 
 import { shareOnWall, storage } from "utils";
 
+import { formatShareMessage, formatTimeText } from "./utils";
+
 import { PatternWin } from "assets";
 
 import style from "./index.module.scss";
@@ -45,13 +47,12 @@ export const GameSuccessPage = () => {
   };
 
   const handleShare = async () => {
-    const message = `Я прошел уровень «${currentLevel.label}», в игре Мемори! Присоединяйся и попробуй обогнать меня 😉`;
+    if (!results) return;
 
-    const data = await shareOnWall(message);
+    const timeText = formatTimeText(results.timer);
+    const message = formatShareMessage(timeText, results.score);
 
-    if (!data) {
-      return;
-    }
+    await shareOnWall(message);
   };
 
   return (

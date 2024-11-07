@@ -23,11 +23,7 @@ export const GameLevelPage = () => {
   const handleShare = async () => {
     const message = `Я достиг нового уровня - «${currentLevel.label}», в игре Мемори! Присоединяйся и попробуй обогнать меня 😉`;
 
-    const data = await shareOnWall(message);
-
-    if (!data) {
-      return;
-    }
+    await shareOnWall(message);
   };
 
   return (
