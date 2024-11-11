@@ -49,7 +49,10 @@ export const GameSuccessPage = () => {
   const handleShare = async () => {
     if (!results) return;
 
-    const timeText = formatTimeText(results.timer);
+    const timeText = formatTimeText(
+      currentLevel.gameOptions.timer - results.timer
+    );
+
     const message = formatShareMessage(timeText, results.score);
 
     await shareOnWall(message);
