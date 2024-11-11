@@ -1,8 +1,10 @@
-/* Box sizing rules */
+/* Box sizing rules and user-select rules */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+
+  user-select: none;
 }
 
 a {

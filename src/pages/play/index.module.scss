@@ -77,9 +77,15 @@
 
     padding: 8px 10px;
 
+    cursor: default;
+
     border-radius: 35px;
 
     color: var(--fuchsia-500, #D946EF);
     background-color: var(--fuchsia-100, #FAE8FF);
+
+    @include actions.hover {
+      transform: unset;
+    }
   }
 }
