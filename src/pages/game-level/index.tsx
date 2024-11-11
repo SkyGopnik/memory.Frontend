@@ -17,7 +17,7 @@ export const GameLevelPage = () => {
 
   const handleClose = () => {
     storage.set(`isLevelShown-${currentLevel.label}`, true);
-    navigate("/play");
+    navigate("/game");
   };
 
   const handleShare = async () => {
