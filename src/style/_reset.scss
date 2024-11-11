@@ -7,6 +7,11 @@
   user-select: none;
 }
 
+//removes backlighting that occurs on mobile devices
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
 a {
   text-decoration: none;
 }
