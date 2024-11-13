@@ -5,7 +5,9 @@ import { Button, LayoutInfo } from "components/core";
 
 import { useLevels } from "hooks";
 
-import { storage } from "utils";
+import { shareOnWall, storage } from "utils";
+
+import { formatShareMessage, formatTimeText } from "./utils";
 
 import { PatternWin } from "assets";
 
@@ -44,6 +46,18 @@ export const GameSuccessPage = () => {
     navigate(isLevelShown ? "/play" : "/game/level");
   };
 
+  const handleShare = async () => {
+    if (!results) return;
+
+    const timeText = formatTimeText(
+      currentLevel.gameOptions.timer - results.timer
+    );
+
+    const message = formatShareMessage(timeText, results.score);
+
+    await shareOnWall(message);
+  };
+
   return (
     <LayoutInfo
       className={style.page}
@@ -54,7 +68,7 @@ export const GameSuccessPage = () => {
       pattern={PatternWin}
       actions={
         <>
-          <Button type="secondary" color="lime">
+          <Button type="secondary" color="lime" onClick={handleShare}>
             Поделиться
           </Button>
 

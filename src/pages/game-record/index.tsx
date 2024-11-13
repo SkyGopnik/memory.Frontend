@@ -5,8 +5,7 @@ import { Button, LayoutInfo } from "components/core";
 
 import { useLevels } from "hooks";
 
-import { storage } from "utils";
-import { formatTime } from "utils/formatTime";
+import { storage, formatTime } from "utils";
 
 import { IconTime, PatternNewRecord } from "assets";
 

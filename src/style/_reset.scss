@@ -1,8 +1,15 @@
-/* Box sizing rules */
+/* Box sizing rules and user-select rules */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+
+  user-select: none;
+}
+
+//removes backlighting that occurs on mobile devices
+* {
+  -webkit-tap-highlight-color: transparent;
 }
 
 a {

@@ -4,7 +4,7 @@ import { Button, LayoutInfo } from "components/core";
 
 import { useLevels } from "hooks";
 
-import { storage } from "utils";
+import { shareOnWall, storage } from "utils";
 
 import { PatternNewRecord } from "assets";
 
@@ -17,7 +17,13 @@ export const GameLevelPage = () => {
 
   const handleClose = () => {
     storage.set(`isLevelShown-${currentLevel.label}`, true);
-    navigate("/play");
+    navigate("/game");
+  };
+
+  const handleShare = async () => {
+    const message = `Я достиг нового уровня - «${currentLevel.label}» в игре Мемори! Присоединяйся и попробуй обогнать меня 😉`;
+
+    await shareOnWall(message);
   };
 
   return (
@@ -33,7 +39,7 @@ export const GameLevelPage = () => {
             Продолжить
           </Button>
 
-          <Button type="primary" color="violet">
+          <Button type="primary" color="violet" onClick={handleShare}>
             Поделиться
           </Button>
         </>

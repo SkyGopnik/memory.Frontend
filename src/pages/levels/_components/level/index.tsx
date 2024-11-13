@@ -21,8 +21,8 @@ export const Level: FC<LevelProps> = ({
   <div
     className={classNames(
       style.level,
-      { [style.levelLocked]: isLocked || isActive },
-      { [style.levelLockedNext]: isActive }
+      { [style.levelLocked]: isLocked },
+      { [style.levelLockedNext]: isActive && isLocked }
     )}
     role="button"
   >
@@ -46,7 +46,7 @@ export const Level: FC<LevelProps> = ({
       </p>
     </div>
 
-    {isActive && (
+    {isActive && isLocked && (
       <div className={style.progress}>
         <div className={style.bar}>
           <div

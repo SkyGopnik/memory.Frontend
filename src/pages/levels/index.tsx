@@ -25,9 +25,18 @@ export const LevelsPage = () => {
   const listRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (lastAvailableLevelIndex >= 3 && listRef.current) {
-      const targetLevel = listRef.current.children[lastAvailableLevelIndex];
-      targetLevel.scrollIntoView({ behavior: "smooth", block: "center" });
+    if (lastAvailableLevelIndex >= 2 && listRef.current) {
+      const listElement = listRef.current;
+      const targetElement = listElement.children[
+        lastAvailableLevelIndex
+      ] as HTMLElement;
+
+      const scrollPosition =
+        targetElement.offsetLeft -
+        listElement.clientWidth / 2 +
+        targetElement.clientWidth / 2 +
+        12;
+      listElement.scrollTo({ left: scrollPosition, behavior: "smooth" });
     }
   }, [lastAvailableLevelIndex]);
 
