@@ -4,8 +4,10 @@ import { LayoutWrapper } from "components/core";
 
 import { PatterPlay } from "assets";
 
+import style from "./index.module.scss";
+
 export const PlayLayout = () => (
-  <LayoutWrapper pattern={PatterPlay}>
+  <LayoutWrapper className={style.layout} pattern={PatterPlay}>
     <Outlet />
   </LayoutWrapper>
 );

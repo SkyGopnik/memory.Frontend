@@ -4,8 +4,10 @@ import { LayoutWrapper } from "components/core";
 
 import { PatternOnboard } from "assets";
 
+import style from "./index.module.scss";
+
 export const OnboardLayout = () => (
-  <LayoutWrapper pattern={PatternOnboard}>
+  <LayoutWrapper className={style.layout} pattern={PatternOnboard}>
     <Outlet />
   </LayoutWrapper>
 );
