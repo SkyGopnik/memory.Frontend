@@ -23,7 +23,7 @@ export const GameSuccessPage = () => {
   const checkLevelShown = async () => {
     const isLevelShown =
       currentLevel.requiredScore !== 0
-        ? await storage.get(`isLevelShown-${currentLevel.label}`)
+        ? await storage.get(`isLevelShown-${currentLevel.requiredScore}`)
         : true;
 
     return Boolean(isLevelShown);

@@ -18,7 +18,10 @@ export const GameRecordPage = () => {
   const { currentLevel } = useLevels();
 
   const handleClose = () => {
-    storage.set(`isRecordShown-${currentLevel.label}-${results?.timer}`, true);
+    storage.set(
+      `isRecordShown-${currentLevel.requiredScore}-${results?.timer}`,
+      true
+    );
     navigate(-1);
   };
 

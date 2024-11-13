@@ -16,7 +16,7 @@ export const GameLevelPage = () => {
   const { currentLevel } = useLevels();
 
   const handleClose = () => {
-    storage.set(`isLevelShown-${currentLevel.label}`, true);
+    storage.set(`isLevelShown-${currentLevel.requiredScore}`, true);
     navigate("/game");
   };
 
