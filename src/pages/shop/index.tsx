@@ -40,8 +40,9 @@ export const ShopPage = () => {
             <Item
               key={index}
               {...item}
-              isOwned={item.price === 0 || ownedThemes.includes(item.value)}
+              isOwned={item.price === 0 || ownedThemes?.includes(item.value)}
               isSelected={activeTheme === item.value}
+              disabled={score - item.price < 0}
               onInstall={() => setTheme(item.value)}
               onPurchase={() => handlePurchase(item)}
             />

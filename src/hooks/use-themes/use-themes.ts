@@ -1,27 +1,34 @@
-import { useMemo, useState } from "react";
+import { useState } from "react";
+
+import { useAsyncEffect } from "hooks/use-async-effect";
 
 import { storage } from "utils";
 
 import { THEMES } from "./constants";
 
 export const useThemes = () => {
-  const [activeTheme, setActiveTheme] = useState(() => {
-    const storedTheme = storage.get("iconsTheme");
+  const [activeTheme, setActiveTheme] = useState<string | null>(null);
+  const [ownedThemes, setOwnedThemes] = useState<Array<string>>();
+
+  useAsyncEffect(async () => setActiveTheme(await getActiveTheme()), []);
+
+  useAsyncEffect(async () => {
+    const storedOwnedThemes = await storage.get("ownedThemes");
+    setOwnedThemes(storedOwnedThemes ? JSON.parse(storedOwnedThemes).data : []);
+  }, []);
+
+  const getActiveTheme = async () => {
+    const storedTheme = await storage.get("iconsTheme");
 
     const isThemeExists = THEMES.some((theme) => theme.value === storedTheme);
 
     return isThemeExists ? storedTheme : THEMES[0].value;
-  });
+  };
 
-  const [ownedThemes, setOwnedThemes] = useState<Array<string>>(() => {
-    const storedOwnedThemes = storage.get("ownedThemes");
-    return storedOwnedThemes ? JSON.parse(storedOwnedThemes).data : [];
-  });
-
-  const currentTheme = useMemo(
-    () => THEMES.find((theme) => theme.value === activeTheme)!,
-    [activeTheme]
-  );
+  const getCurrentTheme = async () => {
+    const activeTheme = await getActiveTheme();
+    return THEMES.find((theme) => theme.value === activeTheme);
+  };
 
   const addTheme = (theme: string) => {
     const newOwnedThemes = new Set(ownedThemes);
@@ -44,10 +51,10 @@ export const useThemes = () => {
 
   return {
     activeTheme,
-    currentTheme,
     ownedThemes,
     setTheme,
     addTheme,
+    getCurrentTheme,
     THEMES
   };
 };

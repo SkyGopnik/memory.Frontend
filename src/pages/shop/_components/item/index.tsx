@@ -18,6 +18,7 @@ export const Item: FC<ItemProps> = ({
   icon: IconComponent,
   isSelected,
   isOwned,
+  disabled,
   onInstall,
   onPurchase
 }) => (
@@ -30,7 +31,12 @@ export const Item: FC<ItemProps> = ({
       </div>
 
       {!isOwned && !isSelected && (
-        <ShopButton className={style.buy} variant="buy" onClick={onPurchase}>
+        <ShopButton
+          className={style.buy}
+          variant="buy"
+          disabled={disabled}
+          onClick={onPurchase}
+        >
           <IconCoin className={style.coin} />
 
           {price}

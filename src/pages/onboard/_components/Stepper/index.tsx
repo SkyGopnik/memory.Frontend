@@ -7,7 +7,7 @@ import type { Step } from "./types";
 import style from "./index.module.scss";
 
 export const Stepper: FunctionComponent<Step> = ({
-  image,
+  image: Image,
   title,
   description,
   onActionClick
@@ -15,7 +15,7 @@ export const Stepper: FunctionComponent<Step> = ({
   return (
     <div className={style.stepper}>
       <div className={style.image}>
-        <img src={image} alt={`Изображение "${title}"`} />
+        <Image />
       </div>
 
       <div className={style.content}>

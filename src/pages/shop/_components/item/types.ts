@@ -6,6 +6,7 @@ export interface ItemProps {
   price: number;
   isOwned?: boolean;
   isSelected?: boolean;
+  disabled?: boolean;
   onInstall?: () => void;
   onPurchase?: () => void;
 }

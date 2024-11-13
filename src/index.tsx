@@ -9,7 +9,5 @@ import "./style/index.scss";
 bridge.send("VKWebAppInit").catch((err) => console.error(err));
 
 createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+  <RouterProvider router={router} />
 );

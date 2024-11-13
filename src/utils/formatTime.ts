@@ -3,5 +3,5 @@ export const formatTime = (timeInSeconds: number): string => {
   const minutes = date.getMinutes();
   const seconds = date.getSeconds();
 
-  return `${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
+  return `${minutes}:${seconds.toString().padStart(2, "0")}`;
 };

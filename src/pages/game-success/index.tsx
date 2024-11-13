@@ -20,17 +20,17 @@ export const GameSuccessPage = () => {
 
   const { currentLevel } = useLevels();
 
-  const checkLevelShown = () => {
+  const checkLevelShown = async () => {
     const isLevelShown =
       currentLevel.requiredScore !== 0
-        ? storage.get(`isLevelShown-${currentLevel.label}`)
+        ? await storage.get(`isLevelShown-${currentLevel.label}`)
         : true;
 
     return Boolean(isLevelShown);
   };
 
-  const handleContinue = () => {
-    const isLevelShown = checkLevelShown();
+  const handleContinue = async () => {
+    const isLevelShown = await checkLevelShown();
 
     setOptions({
       ...currentLevel.gameOptions,
@@ -40,8 +40,8 @@ export const GameSuccessPage = () => {
     navigate(isLevelShown ? "/game" : "/game/level");
   };
 
-  const handleClose = () => {
-    const isLevelShown = checkLevelShown();
+  const handleClose = async () => {
+    const isLevelShown = await checkLevelShown();
 
     navigate(isLevelShown ? "/play" : "/game/level");
   };

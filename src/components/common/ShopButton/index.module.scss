@@ -20,8 +20,10 @@
 
   background: var(--emerald-600);
 
-  @include actions.hover {
-    opacity: .7;
+  &:not(:disabled) {
+    @include actions.hover {
+      opacity: .7;
+    }
   }
 
   &.select {

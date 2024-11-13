@@ -1,5 +1,5 @@
 import classNames from "classnames";
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useNavigate } from "react-router";
 import type { GameOptions } from "store";
 import { useGameStore } from "store";
@@ -9,7 +9,7 @@ import { Info } from "components/core";
 
 import { Item } from "./_components";
 
-import { useScore, useThemes, useUpdateEffect } from "hooks";
+import { useAsyncEffect, useScore, useThemes, useUpdateEffect } from "hooks";
 
 import { useGame } from "./_hooks";
 
@@ -23,7 +23,7 @@ export const GamePage = () => {
   const { options: gameOptions, setResults, updateOptions } = useGameStore();
 
   const { addScore } = useScore();
-  const { currentTheme } = useThemes();
+  const { getCurrentTheme } = useThemes();
 
   const [icons, setIcons] = useState<Record<string, string>>({});
 
@@ -45,33 +45,10 @@ export const GamePage = () => {
     openedItems,
     isGameComplete,
     isGameOver,
+    initGame,
+    startGame,
     handleItemClick
-  } = useGame(currentTheme.icons, options);
-
-  useEffect(() => {
-    (async () => {
-      const neededIcons = field.map(({ value }) => value);
-      const iconsModules: Record<string, string> = {};
-
-      for (const path in iconsPack) {
-        const iconName = (path.split("/").pop() ?? "").replace(".png", "");
-
-        if (!neededIcons.includes(iconName)) {
-          continue;
-        }
-
-        // @ts-expect-error dynamic import
-        const iconPath = (await iconsPack[path]()).default as string;
-
-        const image = new Image();
-        image.src = iconPath;
-
-        iconsModules[iconName] = iconPath;
-      }
-
-      setIcons(iconsModules);
-    })();
-  }, []);
+  } = useGame(options);
 
   useUpdateEffect(() => {
     setResults({
@@ -79,6 +56,9 @@ export const GamePage = () => {
       timer,
       limit
     });
+
+    console.log(field);
+    console.log(isGameComplete);
 
     const attempts = (options?.attempts ?? 0) - 1;
 
@@ -98,11 +78,50 @@ export const GamePage = () => {
     navigate(isGameComplete ? "/game/success" : "/game/fail");
   }, [isGameOver]);
 
+  useAsyncEffect(async () => {
+    const currentTheme = await getCurrentTheme();
+
+    if (!currentTheme) {
+      return;
+    }
+
+    const field = initGame(currentTheme.icons);
+    await loadIcons(field);
+
+    startGame(field);
+  }, []);
+
+  const loadIcons = async (gameField: typeof field) => {
+    const neededIcons = gameField.map(({ value }) => value);
+    const iconsModules: Record<string, string> = {};
+
+    for (const path in iconsPack) {
+      const iconName = (path.split("/").pop() ?? "").replace(".png", "");
+
+      if (!neededIcons.includes(iconName)) {
+        continue;
+      }
+
+      // @ts-expect-error dynamic import
+      iconsModules[iconName] = (await iconsPack[path]()).default as string;
+    }
+
+    await Promise.all(
+      Object.values(iconsModules).map(async (path) => {
+        const image = new Image();
+        image.src = path;
+        await new Promise((resolve) => (image.onload = resolve));
+      })
+    );
+
+    setIcons(iconsModules);
+  };
+
   return (
     <div className={style.page}>
       <Info timer={timer} score={score} limit={limit} className={style.info} />
 
-      <CloseButton onClick={() => navigate(-2)} className={style.close} />
+      <CloseButton onClick={() => navigate("/play")} className={style.close} />
 
       <div className={style.game}>
         <div
