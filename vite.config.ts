@@ -2,6 +2,7 @@ import react from "@vitejs/plugin-react";
 import { readdirSync } from "fs";
 import * as path from "path";
 import { defineConfig } from "vite";
+import babel from "vite-plugin-babel";
 import svgr from "vite-plugin-svgr";
 
 const absolutePathAliases: { [key: string]: string } = {};
@@ -30,6 +31,7 @@ export default defineConfig({
     outDir: "../dist"
   },
   plugins: [
+    babel(),
     react(),
     svgr({
       include: "**/*.svg"
