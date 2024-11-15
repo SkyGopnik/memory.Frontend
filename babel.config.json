@@ -3,6 +3,9 @@
     [
       "@babel/preset-env",
       {
+        "targets": {
+          "browsers": ["last 2 versions", "not dead", "not IE 11"]
+        },
         "useBuiltIns": "entry",
         "corejs": "3.22"
       }
